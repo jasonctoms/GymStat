@@ -1,9 +1,6 @@
 package com.apps.straightface.gymstat;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.github.clans.fab.FloatingActionButton;
 
 public class RoutinesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
@@ -25,14 +26,25 @@ public class RoutinesActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
+        FloatingActionButton fabItem1 = (FloatingActionButton) findViewById(R.id.fab_menu_item1);
+        fabItem1.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Toast.makeText(RoutinesActivity.this, "Start a free workout",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+        com.github.clans.fab.FloatingActionButton fabItem2 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab_menu_item2);
+        fabItem2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Toast.makeText(RoutinesActivity.this, "Add a new routine",
+                        Toast.LENGTH_LONG).show();
             }
         });
 

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#009688</color>
+    <color name="colorAccentLight">#7fcac3</color>
+    <color name="colorAccentAnalogBlue">#005996</color>
+    <color name="colorAccentAnalogBlueLight">#7facca</color>
+    <color name="colorAccentAnalogGreen">#00963d</color>
+    <color name="colorAccentAnalogGreenLight">#7fca9e</color>
 </resources>
