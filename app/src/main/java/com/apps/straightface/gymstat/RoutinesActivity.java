@@ -1,5 +1,6 @@
 package com.apps.straightface.gymstat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
 
 import com.github.clans.fab.FloatingActionButton;
 
@@ -32,8 +33,7 @@ public class RoutinesActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(RoutinesActivity.this, "Start a free workout",
-                        Toast.LENGTH_LONG).show();
+                startFreeWorkout();
             }
         });
 
@@ -43,8 +43,27 @@ public class RoutinesActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(RoutinesActivity.this, "Add a new routine",
-                        Toast.LENGTH_LONG).show();
+                addRoutine();
+            }
+        });
+
+        Button addRoutineButton = (Button) findViewById(R.id.add_routine_button);
+        addRoutineButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                addRoutine();
+            }
+        });
+
+        Button startFreeWorkoutButton = (Button) findViewById(R.id.free_workout_button);
+        startFreeWorkoutButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startFreeWorkout();
             }
         });
 
@@ -132,5 +151,17 @@ public class RoutinesActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void addRoutine()
+    {
+        Intent intent = new Intent(this, EditRoutineActivity.class);
+        startActivity(intent);
+    }
+
+    public void startFreeWorkout()
+    {
+        Intent intent = new Intent(this, WorkoutActivity.class);
+        startActivity(intent);
     }
 }

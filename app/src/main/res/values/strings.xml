@@ -9,4 +9,10 @@
     <string name="third_party_libraries">Third party libraries</string>
     <string name="free_workout">Start free workout</string>
     <string name="new_routine">Create new routine</string>
+    <string name="no_routines">You have no saved routines.</string>
+    <string name="or_text">or</string>
+    <string name="edit_routine">Edit routine</string>
+    <string name="title_activity_workout">WorkoutActivity</string>
+    <string name="add_exercise">Add exercise</string>
+
 </resources>
