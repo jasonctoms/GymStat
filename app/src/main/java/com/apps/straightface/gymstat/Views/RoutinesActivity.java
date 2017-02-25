@@ -16,19 +16,27 @@ import android.widget.Button;
 import com.apps.straightface.gymstat.R;
 import com.github.clans.fab.FloatingActionButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RoutinesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
+    @BindView(R.id.fab_menu_item1) FloatingActionButton fabItem1;
+    @BindView(R.id.fab_menu_item2) FloatingActionButton fabItem2;
+    @BindView(R.id.add_routine_button) Button addRoutineButton;
+    @BindView(R.id.free_workout_button) Button startFreeWorkoutButton;
+    @BindView(R.id.plate_calc_button) Button plateCalcButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routines);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fabItem1 = (FloatingActionButton) findViewById(R.id.fab_menu_item1);
         fabItem1.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -38,7 +46,6 @@ public class RoutinesActivity extends AppCompatActivity
             }
         });
 
-        com.github.clans.fab.FloatingActionButton fabItem2 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab_menu_item2);
         fabItem2.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -48,7 +55,6 @@ public class RoutinesActivity extends AppCompatActivity
             }
         });
 
-        Button addRoutineButton = (Button) findViewById(R.id.add_routine_button);
         addRoutineButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -58,13 +64,21 @@ public class RoutinesActivity extends AppCompatActivity
             }
         });
 
-        Button startFreeWorkoutButton = (Button) findViewById(R.id.free_workout_button);
         startFreeWorkoutButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 startFreeWorkout();
+            }
+        });
+
+        plateCalcButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                plateCalculator();
             }
         });
 
@@ -164,5 +178,10 @@ public class RoutinesActivity extends AppCompatActivity
     {
         Intent intent = new Intent(this, WorkoutActivity.class);
         startActivity(intent);
+    }
+
+    public void plateCalculator()
+    {
+        new PlateCalcDialog(this).show();
     }
 }
