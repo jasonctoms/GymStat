@@ -27,6 +27,7 @@ public class RoutinesActivity extends AppCompatActivity
     @BindView(R.id.add_routine_button) Button addRoutineButton;
     @BindView(R.id.free_workout_button) Button startFreeWorkoutButton;
     @BindView(R.id.plate_calc_button) Button plateCalcButton;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,7 +35,7 @@ public class RoutinesActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routines);
         ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         fabItem1.setOnClickListener(new View.OnClickListener()

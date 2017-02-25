@@ -8,16 +8,20 @@ import android.widget.Toast;
 import com.apps.straightface.gymstat.R;
 import com.github.clans.fab.FloatingActionButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class EditRoutineActivity extends AppCompatActivity
 {
+    @BindView(R.id.add_routine_fab) FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_routine);
+        ButterKnife.bind(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_routine_fab);
         fab.setOnClickListener(new View.OnClickListener()
         {
             @Override

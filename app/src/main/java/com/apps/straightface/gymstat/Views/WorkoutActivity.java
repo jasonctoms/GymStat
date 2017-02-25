@@ -10,18 +10,24 @@ import android.widget.Toast;
 import com.apps.straightface.gymstat.R;
 import com.github.clans.fab.FloatingActionButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class WorkoutActivity extends AppCompatActivity
 {
+    @BindView(R.id.workout_fab) FloatingActionButton fab;
+    @BindView(R.id.add_exercise_button) Button addExerciseButton;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.workout_fab);
         fab.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -32,7 +38,6 @@ public class WorkoutActivity extends AppCompatActivity
             }
         });
 
-        Button addExerciseButton = (Button) findViewById(R.id.add_exercise_button);
         addExerciseButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
