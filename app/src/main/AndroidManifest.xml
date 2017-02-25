@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RoutinesActivity"
+            android:name=".Views.RoutinesActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,11 +19,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EditRoutineActivity"
+            android:name=".Views.EditRoutineActivity"
             android:label="@string/edit_routine">
         </activity>
         <activity
-            android:name=".WorkoutActivity"
+            android:name=".Views.WorkoutActivity"
             android:label="@string/title_activity_workout"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
