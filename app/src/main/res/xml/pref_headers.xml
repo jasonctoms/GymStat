@@ -8,6 +8,11 @@
         android:title="@string/pref_header_general"/>
 
     <header
+        android:fragment="com.apps.straightface.gymstat.Views.SettingsActivity$UnitsPreferenceFragment"
+        android:icon="@drawable/ic_ruler"
+        android:title="@string/units"/>
+
+    <header
         android:fragment="com.apps.straightface.gymstat.Views.SettingsActivity$NotificationPreferenceFragment"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/pref_header_notifications"/>
