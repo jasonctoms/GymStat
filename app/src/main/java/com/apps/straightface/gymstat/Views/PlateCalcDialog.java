@@ -3,6 +3,7 @@ package com.apps.straightface.gymstat.Views;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
@@ -45,11 +46,20 @@ public class PlateCalcDialog extends Dialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plate_calc_dialog);
         ButterKnife.bind(this);
+
+        incrementWeightButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                calculatePlates();
+            }
+        });
     }
 
     /*this method calculates how many of each plate is required for the given
     weight, and calls to set all of the views appropriately*/
-    private void calculatePlates(double value)
+    private void calculatePlates()
     {
         int numOfPlate1 = 0;
         int numOfPlate2 = 0;
@@ -59,7 +69,78 @@ public class PlateCalcDialog extends Dialog
         int numOfPlate6 = 0;
 
         //Chris write some logic here
+        //Let me know if you find a more eloquent way to do this other than sooo many while loops.
+        double enteredWeight = 360; //Test for the thing. Need to implement the user input.
+        double newWeight;
 
+        newWeight = (enteredWeight - 45) / 2; //removing weight of bar from entered value and breaking into 2 sides of bar
+
+        while(newWeight >= 45)
+        {
+            numOfPlate1++;
+            newWeight = newWeight - 45;
+
+            if (newWeight <= 0)
+            {
+                break;
+            }
+        }
+
+        while(newWeight >= 35 )
+        {
+            numOfPlate2++;
+            newWeight = newWeight - 35;
+
+            if (newWeight <= 0)
+            {
+                break;
+            }
+        }
+
+        while(newWeight >= 25 )
+        {
+            numOfPlate3++;
+            newWeight = newWeight - 25;
+
+            if (newWeight <= 0)
+            {
+                break;
+            }
+        }
+
+        while(newWeight >= 10)
+        {
+            numOfPlate4++;
+            newWeight = newWeight - 10;
+
+            if (newWeight <= 0)
+            {
+                break;
+            }
+        }
+
+        while(newWeight >= 5)
+        {
+            numOfPlate5++;
+            newWeight = newWeight - 5;
+
+            if (newWeight <= 0)
+            {
+                break;
+            }
+        }
+
+        while(newWeight >= 2.5)
+        {
+            numOfPlate6++;
+            newWeight = newWeight - 2.5;
+
+            if (newWeight <= 0)
+            {
+                break;
+            }
+        }
+        //When updated, these will be the number of plates needed *on each side*
         updatePlateViews(numOfPlate1, numOfPlate2, numOfPlate3, numOfPlate4, numOfPlate5, numOfPlate6);
     }
 
