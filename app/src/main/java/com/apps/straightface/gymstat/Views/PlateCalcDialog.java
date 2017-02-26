@@ -46,4 +46,30 @@ public class PlateCalcDialog extends Dialog
         setContentView(R.layout.plate_calc_dialog);
         ButterKnife.bind(this);
     }
+
+    /*this method calculates how many of each plate is required for the given
+    weight, and calls to set all of the views appropriately*/
+    private void calculatePlates(double value)
+    {
+        int numOfPlate1 = 0;
+        int numOfPlate2 = 0;
+        int numOfPlate3 = 0;
+        int numOfPlate4 = 0;
+        int numOfPlate5 = 0;
+        int numOfPlate6 = 0;
+
+        //Chris write some logic here
+
+        updatePlateViews(numOfPlate1, numOfPlate2, numOfPlate3, numOfPlate4, numOfPlate5, numOfPlate6);
+    }
+
+    private void updatePlateViews(int n1, int n2, int n3, int n4, int n5, int n6)
+    {
+        plate1.setText(Integer.toString(n1));
+        plate2.setText(Integer.toString(n2));
+        plate3.setText(Integer.toString(n3));
+        plate4.setText(Integer.toString(n4));
+        plate5.setText(Integer.toString(n5));
+        plate6.setText(Integer.toString(n6));
+    }
 }
