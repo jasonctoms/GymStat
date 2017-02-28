@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -14,10 +13,12 @@ import com.apps.straightface.gymstat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
 
-public class PlateCalcDialog extends Dialog
+class PlateCalcDialog extends Dialog
 {
     @BindView(R.id.plate1) TextView plate1;
     @BindView(R.id.plate2) TextView plate2;
@@ -33,8 +34,6 @@ public class PlateCalcDialog extends Dialog
     @BindView(R.id.plate6_title) TextView plate6Title;
     @BindView(R.id.bar_type_switch) Switch barTypeSwitch;
     @BindView(R.id.wanted_plate_weight) EditText wantedWeight;
-    @BindView(R.id.increment_plate_weight) ImageButton incrementWeightButton;
-    @BindView(R.id.decrement_plate_weight) ImageButton decrementWeightButton;
 
     private int mNumOfPlate1 = 0;
     private int mNumOfPlate2 = 0;
@@ -44,6 +43,10 @@ public class PlateCalcDialog extends Dialog
     private int mNumOfPlate6 = 0;
     private int mBarWeight;
     private Context mContext;
+    private int mWeightIncrement;
+    private String mWeightUnits;
+    private String mBarString;
+
     PlateCalcDialog(Context context)
     {
         super(context);
@@ -65,21 +68,54 @@ public class PlateCalcDialog extends Dialog
         }
     }
 
+    @OnCheckedChanged(R.id.bar_type_switch)
+    void onSwitchChanged(boolean isSwitched)
+    {
+        if (isSwitched)
+        {
+            barTypeSwitch.setText(mBarString + "55lbs");
+            mBarWeight = 55;
+        }
+        else
+        {
+            barTypeSwitch.setText(mBarString +"45lbs");
+            mBarWeight = 45;
+        }
+    }
+
+    private void setPreferences()
+    {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        mWeightUnits = prefs.getString("weight_units", "Pounds");
+        mWeightIncrement = 1;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plate_calc_dialog);
         ButterKnife.bind(this);
+        setPreferences();
+
+        mBarString = mContext.getResources().getString(R.string.bar_weight);
 
         updatePlateViews(mNumOfPlate1, mNumOfPlate2, mNumOfPlate3, mNumOfPlate4, mNumOfPlate5, mNumOfPlate6);
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        String units = prefs.getString("weight_units", "Pounds");
-        if(units.equals("Kilograms"))
+        if(mWeightUnits.equals("Kilograms"))
+        {
             setPlateTitles("25kg", "20kg", "15kg", "10kg", "5kg", "2.5kg");
-        else if (units.equals("Pounds"))
+            mBarWeight = 20;
+            barTypeSwitch.setText(mBarString +"20kg");
+        }
+        else if (mWeightUnits.equals("Pounds"))
+        {
             setPlateTitles("45lbs", "35lbs", "25lbs", "10lbs", "5lbs", "2.5lbs");
+            mBarWeight = 45;
+            barTypeSwitch.setText(mBarString +"45lbs");
+        }
+
+        //TODO: eventually this value can be put in the constructor as current weight
+        wantedWeight.setText("0.0");
     }
 
     /*this method calculates how many of each plate is required for the given
@@ -91,7 +127,8 @@ public class PlateCalcDialog extends Dialog
 
         double newWeight;
 
-        newWeight = (enteredWeight - 45) / 2; //removing weight of bar from entered value and breaking into 2 sides of bar
+        newWeight = (enteredWeight - mBarWeight) / 2; //removing weight of bar from entered value and
+        // breaking into 2 sides of bar
 
         while(newWeight >= 45)
         {
@@ -174,6 +211,31 @@ public class PlateCalcDialog extends Dialog
         plate4Title.setText(n4);
         plate5Title.setText(n5);
         plate6Title.setText(n6);
+    }
 
+    @OnClick(R.id.increment_plate_weight)
+    void incrementWeight()
+    {
+        String currentValue = wantedWeight.getText().toString();
+        if (!currentValue.isEmpty())
+        {
+            double newValue = Double.parseDouble(currentValue);
+            newValue += mWeightIncrement;
+            if (newValue <= 999999)
+                wantedWeight.setText(Double.toString(newValue));
+        }
+    }
+
+    @OnClick(R.id.decrement_plate_weight)
+    void decrementWeight()
+    {
+        String currentValue = wantedWeight.getText().toString();
+        if (!currentValue.isEmpty())
+        {
+            double newValue = Double.parseDouble(currentValue);
+            newValue -= mWeightIncrement;
+            if (newValue >= 0)
+                wantedWeight.setText(Double.toString(newValue));
+        }
     }
 }
