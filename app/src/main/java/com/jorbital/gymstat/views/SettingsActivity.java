@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat.Views;
+package com.jorbital.gymstat.views;
 
 
 import android.content.Context;
@@ -18,8 +18,8 @@ import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
-import com.apps.straightface.gymstat.GymStatStringConstants;
-import com.apps.straightface.gymstat.R;
+import com.jorbital.gymstat.GymStatStringConstants;
+import com.jorbital.gymstat.R;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat.Views;
+package com.jorbital.gymstat.views;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

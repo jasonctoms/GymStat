@@ -1,8 +1,8 @@
-package com.apps.straightface.gymstat.Data;
+package com.jorbital.gymstat.data;
 
 import android.content.Context;
 
-import com.apps.straightface.gymstat.R;
+import com.jorbital.gymstat.R;
 
 import java.util.ArrayList;
 import java.util.List;

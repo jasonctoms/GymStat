@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat.Views;
+package com.jorbital.gymstat.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.apps.straightface.gymstat.R;
 import com.github.clans.fab.FloatingActionButton;
+import com.jorbital.gymstat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

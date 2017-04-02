@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat;
+package com.jorbital.gymstat;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.apps.straightface.gymstat", appContext.getPackageName());
+        assertEquals("com.jorbital.gymstat", appContext.getPackageName());
     }
 }

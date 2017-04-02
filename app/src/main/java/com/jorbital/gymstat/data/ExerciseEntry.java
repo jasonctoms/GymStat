@@ -1,6 +1,6 @@
-package com.apps.straightface.gymstat.Data;
+package com.jorbital.gymstat.data;
 
-import com.apps.straightface.gymstat.Utils.WeightUnitRealm;
+import com.jorbital.gymstat.utils.WeightUnitRealm;
 
 import java.util.Date;
 

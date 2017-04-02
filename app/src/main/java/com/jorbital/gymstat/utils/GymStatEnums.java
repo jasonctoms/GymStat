@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat.Utils;
+package com.jorbital.gymstat.utils;
 
 public class GymStatEnums
 {

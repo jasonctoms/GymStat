@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat;
+package com.jorbital.gymstat;
 
 public class GymStatStringConstants
 {

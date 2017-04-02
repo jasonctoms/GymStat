@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.apps.straightface.gymstat">
+          package="com.jorbital.gymstat">
 
     <application
         android:name=".GymStatApplication"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Views.RoutinesActivity"
+            android:name=".views.RoutinesActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,16 +20,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Views.EditRoutineActivity"
+            android:name=".views.EditRoutineActivity"
             android:label="@string/edit_routine">
         </activity>
         <activity
-            android:name=".Views.WorkoutActivity"
+            android:name=".views.WorkoutActivity"
             android:label="@string/title_activity_workout"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Views.SettingsActivity"
+            android:name=".views.SettingsActivity"
             android:label="@string/title_activity_settings">
         </activity>
     </application>

@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat.Views;
+package com.jorbital.gymstat.views;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.apps.straightface.gymstat.GymStatStringConstants;
-import com.apps.straightface.gymstat.R;
+import com.jorbital.gymstat.GymStatStringConstants;
+import com.jorbital.gymstat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

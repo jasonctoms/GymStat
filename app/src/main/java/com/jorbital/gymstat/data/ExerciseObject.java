@@ -1,6 +1,6 @@
-package com.apps.straightface.gymstat.Data;
+package com.jorbital.gymstat.data;
 
-import com.apps.straightface.gymstat.Utils.MuscleGroupRealm;
+import com.jorbital.gymstat.utils.MuscleGroupRealm;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;

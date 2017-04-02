@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat.Data;
+package com.jorbital.gymstat.data;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;

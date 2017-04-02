@@ -1,6 +1,6 @@
-package com.apps.straightface.gymstat.Data;
+package com.jorbital.gymstat.data;
 
-import com.apps.straightface.gymstat.Utils.DayOfWeekRealm;
+import com.jorbital.gymstat.utils.DayOfWeekRealm;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;

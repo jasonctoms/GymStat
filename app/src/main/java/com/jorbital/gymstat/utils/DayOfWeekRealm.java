@@ -1,4 +1,4 @@
-package com.apps.straightface.gymstat.Utils;
+package com.jorbital.gymstat.utils;
 
 import org.threeten.bp.DayOfWeek;
 
