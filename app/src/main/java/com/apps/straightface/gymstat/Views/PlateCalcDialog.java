@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.apps.straightface.gymstat.GymStatStringConstants;
 import com.apps.straightface.gymstat.R;
 
 import butterknife.BindView;
@@ -86,7 +87,7 @@ class PlateCalcDialog extends Dialog
     private void setPreferences()
     {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        mWeightUnits = prefs.getString("weight_units", "Pounds");
+        mWeightUnits = prefs.getString(GymStatStringConstants.WEIGHT_UNIT, GymStatStringConstants.POUNDS);
         mWeightIncrement = 1;
     }
 

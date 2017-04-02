@@ -4,7 +4,7 @@
         android:defaultValue="0"
         android:entries="@array/pref_weight_list_titles"
         android:entryValues="@array/pref_weight_list_titles"
-        android:key="weight_units"
+        android:key="weight_unit"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/pref_default_weight_units"/>
