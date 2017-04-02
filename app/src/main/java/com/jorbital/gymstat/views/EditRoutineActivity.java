@@ -1,12 +1,12 @@
 package com.jorbital.gymstat.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
-import com.jorbital.gymstat.R;
 import com.github.clans.fab.FloatingActionButton;
+import com.jorbital.gymstat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,9 +27,14 @@ public class EditRoutineActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(EditRoutineActivity.this, "This button will open the exercise picker.",
-                        Toast.LENGTH_LONG).show();
+                addExercise();
             }
         });
+    }
+
+    public void addExercise()
+    {
+        Intent intent = new Intent(this, ExerciseListActivity.class);
+        startActivity(intent);
     }
 }

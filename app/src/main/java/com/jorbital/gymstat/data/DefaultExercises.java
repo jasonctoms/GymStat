@@ -17,12 +17,53 @@ public class DefaultExercises
     {
         mRealm = Realm.getDefaultInstance();
 
+        //delete everything for now, during testing
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.delete(ExerciseObject.class);
+            }
+        });
+
         //TODO: add the default exercises here
         List<String> defaultExercises = new ArrayList<>();
 
-        String barbellBenchName = context.getString(R.string.barbell_bench);
-        defaultExercises.add(barbellBenchName);
-
+        String bbBenchName = context.getString(R.string.bb_bench);
+        defaultExercises.add(bbBenchName);
+        String dbBenchName = context.getString(R.string.db_bench);
+        defaultExercises.add(dbBenchName);
+        String bbIncBenchName = context.getString(R.string.bb_incline_bench);
+        defaultExercises.add(bbIncBenchName);
+        String dbIncBenchName = context.getString(R.string.db_incline_bench);
+        defaultExercises.add(dbIncBenchName);
+        String bbDecBenchName = context.getString(R.string.bb_decline_bench);
+        defaultExercises.add(bbDecBenchName);
+        String dbBDecBenchName = context.getString(R.string.db_decline_bench);
+        defaultExercises.add(dbBDecBenchName);
+        String bbSquatName = context.getString(R.string.bb_squat);
+        defaultExercises.add(bbSquatName);
+        String dbSquatName = context.getString(R.string.db_squat);
+        defaultExercises.add(dbSquatName);
+        String bbStandingShoulderName = context.getString(R.string.bb_shoulder_press_standing);
+        defaultExercises.add(bbStandingShoulderName);
+        String dbStandingShoulderName = context.getString(R.string.db_shoulder_press_standing);
+        defaultExercises.add(dbStandingShoulderName);
+        String bbSeatedShoulderName = context.getString(R.string.bb_shoulder_press_seated);
+        defaultExercises.add(bbSeatedShoulderName);
+        String dbSeatedShoulderName = context.getString(R.string.db_shoulder_press_seated);
+        defaultExercises.add(dbSeatedShoulderName);
+        String bbBicepCurlName = context.getString(R.string.bb_bicep_curl);
+        defaultExercises.add(bbBicepCurlName);
+        String dbBicepCurlName = context.getString(R.string.db_bicep_curl);
+        defaultExercises.add(dbBicepCurlName);
+        String bbTricepExtensionName = context.getString(R.string.bb_tricep_extension);
+        defaultExercises.add(bbTricepExtensionName);
+        String dbTricepExtensionName = context.getString(R.string.db_tricep_extension);
+        defaultExercises.add(dbTricepExtensionName);
+        String latPullDownName = context.getString(R.string.lat_pulldown);
+        defaultExercises.add(latPullDownName);
+        String sideLateralRaiseName = context.getString(R.string.side_lateral_raise);
+        defaultExercises.add(sideLateralRaiseName);
 
         for(String name : defaultExercises)
             addDefaultExercise(name);
@@ -38,7 +79,7 @@ public class DefaultExercises
             {
                 ExerciseObject e = realm.createObject(ExerciseObject.class);
                 e.setName(exerciseName);
-                //TODO: set image
+                //TODO: set image and muscle groups
             }
         });
     }
