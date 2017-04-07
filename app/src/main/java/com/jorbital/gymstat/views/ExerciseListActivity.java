@@ -1,49 +1,42 @@
 package com.jorbital.gymstat.views;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-import com.github.clans.fab.FloatingActionButton;
 import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.data.ExerciseObject;
+import com.jorbital.gymstat.databinding.ActivityExerciseListBinding;
 import com.jorbital.gymstat.utils.RecyclerViewClickListener;
 import com.jorbital.gymstat.utils.RecyclerViewTouchListener;
 import com.jorbital.gymstat.viewmodels.ExerciseListViewModel;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 
 public class ExerciseListActivity extends AppCompatActivity
 {
-    @BindView(R.id.add_exercise_fab) FloatingActionButton fab;
-    @BindView(R.id.exercise_rv) RecyclerView exerciseList;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-
     private OrderedRealmCollection<ExerciseObject> allExercises;
     private Realm realm;
+    private ActivityExerciseListBinding b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise_list);
-        ButterKnife.bind(this);
+        b = DataBindingUtil.setContentView(this, R.layout.activity_exercise_list);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(b.toolbar);
 
         realm = Realm.getDefaultInstance();
 
         CreateViewModel();
 
-        fab.setOnClickListener(new View.OnClickListener()
+        b.addExerciseFab.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -53,12 +46,12 @@ public class ExerciseListActivity extends AppCompatActivity
             }
         });
 
-        exerciseList.setHasFixedSize(true);
-        exerciseList.setAdapter(new ExerciseListAdapter(allExercises, true));
-        exerciseList.setLayoutManager(new LinearLayoutManager(this));
+        b.exerciseRv.setHasFixedSize(true);
+        b.exerciseRv.setAdapter(new ExerciseListAdapter(allExercises, true));
+        b.exerciseRv.setLayoutManager(new LinearLayoutManager(this));
 
-        exerciseList.addOnItemTouchListener(new RecyclerViewTouchListener(this,
-                exerciseList, new RecyclerViewClickListener()
+        b.exerciseRv.addOnItemTouchListener(new RecyclerViewTouchListener(this,
+                b.exerciseRv, new RecyclerViewClickListener()
         {
             @Override
             public void onClick(View view, final int position)
@@ -87,7 +80,7 @@ public class ExerciseListActivity extends AppCompatActivity
     protected void onDestroy()
     {
         super.onDestroy();
-        exerciseList.setAdapter(null);
+        b.exerciseRv.setAdapter(null);
         realm.close();
     }
 }

@@ -1,45 +1,32 @@
 package com.jorbital.gymstat.views;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-import com.github.clans.fab.FloatingActionButton;
 import com.jorbital.gymstat.R;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.jorbital.gymstat.databinding.ActivityRoutinesBinding;
 
 public class RoutinesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
-    @BindView(R.id.fab_menu_item1) FloatingActionButton fabItem1;
-    @BindView(R.id.fab_menu_item2) FloatingActionButton fabItem2;
-    @BindView(R.id.add_routine_button) Button addRoutineButton;
-    @BindView(R.id.free_workout_button) Button startFreeWorkoutButton;
-    @BindView(R.id.plate_calc_button) Button plateCalcButton;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.drawer_layout) DrawerLayout drawer;
-    @BindView(R.id.nav_view) NavigationView navigationView;
+    ActivityRoutinesBinding b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_routines);
-        ButterKnife.bind(this);
+        b = DataBindingUtil.setContentView(this, R.layout.activity_routines);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(b.toolbar);
 
-        fabItem1.setOnClickListener(new View.OnClickListener()
+        b.fabMenuFreeWorkout.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -48,7 +35,7 @@ public class RoutinesActivity extends AppCompatActivity
             }
         });
 
-        fabItem2.setOnClickListener(new View.OnClickListener()
+        b.fabMenuNewRoutine.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -57,7 +44,7 @@ public class RoutinesActivity extends AppCompatActivity
             }
         });
 
-        addRoutineButton.setOnClickListener(new View.OnClickListener()
+        b.addRoutineButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -66,7 +53,7 @@ public class RoutinesActivity extends AppCompatActivity
             }
         });
 
-        startFreeWorkoutButton.setOnClickListener(new View.OnClickListener()
+        b.freeWorkoutButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -75,7 +62,7 @@ public class RoutinesActivity extends AppCompatActivity
             }
         });
 
-        plateCalcButton.setOnClickListener(new View.OnClickListener()
+        b.plateCalcButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -85,19 +72,19 @@ public class RoutinesActivity extends AppCompatActivity
         });
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, b.drawerLayout, b.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        b.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(this);
+        b.navView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed()
     {
-        if (drawer.isDrawerOpen(GravityCompat.START))
+        if (b.drawerLayout.isDrawerOpen(GravityCompat.START))
         {
-            drawer.closeDrawer(GravityCompat.START);
+            b.drawerLayout.closeDrawer(GravityCompat.START);
         }
         else
         {
@@ -138,7 +125,7 @@ public class RoutinesActivity extends AppCompatActivity
 
         }
 
-        drawer.closeDrawer(GravityCompat.START);
+        b.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
