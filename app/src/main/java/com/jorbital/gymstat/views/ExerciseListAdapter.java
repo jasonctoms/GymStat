@@ -1,25 +1,20 @@
 package com.jorbital.gymstat.views;
 
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.data.ExerciseObject;
+import com.jorbital.gymstat.databinding.ExerciseListItemBinding;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
 class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject, ExerciseListAdapter.ExerciseViewHolder>
 {
 
-    OrderedRealmCollection<ExerciseObject> mData;
+    private OrderedRealmCollection<ExerciseObject> mData;
 
     ExerciseListAdapter(@Nullable OrderedRealmCollection<ExerciseObject> data, boolean autoUpdate)
     {
@@ -30,17 +25,15 @@ class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject, Exerc
     @Override
     public ExerciseViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.exercise_list_item, parent, false);
-
-        return new ExerciseViewHolder(v);
+        ExerciseListItemBinding b = ExerciseListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ExerciseViewHolder(b);
     }
 
     @Override
     public void onBindViewHolder(ExerciseViewHolder holder, int position)
     {
         ExerciseObject exercise = getItem(position);
-        holder.exerciseName.setText(exercise.getName());
+        holder.bind(exercise);
     }
 
     @Override
@@ -49,15 +42,20 @@ class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject, Exerc
         return mData.size();
     }
 
-    static class ExerciseViewHolder extends RecyclerView.ViewHolder
+    class ExerciseViewHolder extends RecyclerView.ViewHolder
     {
-        @BindView(R.id.exercise_name)
-        TextView exerciseName;
+        private final ExerciseListItemBinding b;
 
-        ExerciseViewHolder(View v)
+        ExerciseViewHolder(ExerciseListItemBinding binding)
         {
-            super(v);
-            ButterKnife.bind(this, v);
+            super(binding.getRoot());
+            this.b = binding;
+        }
+
+        void bind(ExerciseObject item)
+        {
+            b.exerciseName.setText(item.getName());
+            b.executePendingBindings();
         }
     }
 }
