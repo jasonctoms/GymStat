@@ -19,32 +19,20 @@ public class WorkoutActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         b = DataBindingUtil.setContentView(this, R.layout.activity_workout);
+        b.setActivity(this);
 
         setSupportActionBar(b.toolbar);
-
-        b.workoutFab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Toast.makeText(WorkoutActivity.this, "This button start or stop the workout.",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        b.addExerciseButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addExercise();
-            }
-        });
     }
 
-    public void addExercise()
+    public void addExercise(View view)
     {
         Intent intent = new Intent(this, ExerciseListActivity.class);
         startActivity(intent);
+    }
+
+    public void startWorkout(View view)
+    {
+        Toast.makeText(WorkoutActivity.this, "This button start or stop the workout.",
+                Toast.LENGTH_LONG).show();
     }
 }

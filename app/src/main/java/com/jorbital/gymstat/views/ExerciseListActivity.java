@@ -2,7 +2,6 @@ package com.jorbital.gymstat.views;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -29,22 +28,13 @@ public class ExerciseListActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         b = DataBindingUtil.setContentView(this, R.layout.activity_exercise_list);
+        b.setActivity(this);
 
         setSupportActionBar(b.toolbar);
 
         realm = Realm.getDefaultInstance();
 
         CreateViewModel();
-
-        b.addExerciseFab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "This will let the user add a new exercise to the database, or save the selection if multiple items are selected.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         b.exerciseRv.setHasFixedSize(true);
         b.exerciseRv.setAdapter(new ExerciseListAdapter(allExercises, true));
@@ -82,5 +72,11 @@ public class ExerciseListActivity extends AppCompatActivity
         super.onDestroy();
         b.exerciseRv.setAdapter(null);
         realm.close();
+    }
+
+    public void fabClicked(View view)
+    {
+        Toast.makeText(this, "This will let the user add a new exercise to the database, or save the selection if multiple items are selected.", Toast.LENGTH_LONG)
+                .show();
     }
 }

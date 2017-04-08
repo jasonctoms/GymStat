@@ -9,8 +9,6 @@ import android.view.View;
 import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.databinding.ActivityEditRoutineBinding;
 
-import butterknife.ButterKnife;
-
 public class EditRoutineActivity extends AppCompatActivity
 {
     ActivityEditRoutineBinding b;
@@ -20,19 +18,10 @@ public class EditRoutineActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         b = DataBindingUtil.setContentView(this, R.layout.activity_edit_routine);
-        ButterKnife.bind(this);
-
-        b.addRoutineFab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addExercise();
-            }
-        });
+        b.setActivity(this);
     }
 
-    public void addExercise()
+    public void addExercise(View view)
     {
         Intent intent = new Intent(this, ExerciseListActivity.class);
         startActivity(intent);

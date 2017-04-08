@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="activity"
+            type="com.jorbital.gymstat.views.ExerciseListActivity"/>
+    </data>
+
     <android.support.design.widget.CoordinatorLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -46,6 +52,7 @@
             android:id="@+id/addExerciseFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{activity::fabClicked}"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_add"

@@ -23,53 +23,9 @@ public class RoutinesActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         b = DataBindingUtil.setContentView(this, R.layout.activity_routines);
+        b.setActivity(this);
 
         setSupportActionBar(b.toolbar);
-
-        b.fabMenuFreeWorkout.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                startFreeWorkout();
-            }
-        });
-
-        b.fabMenuNewRoutine.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addRoutine();
-            }
-        });
-
-        b.addRoutineButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                addRoutine();
-            }
-        });
-
-        b.freeWorkoutButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                startFreeWorkout();
-            }
-        });
-
-        b.plateCalcButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                plateCalculator();
-            }
-        });
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, b.drawerLayout, b.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -129,19 +85,19 @@ public class RoutinesActivity extends AppCompatActivity
         return true;
     }
 
-    public void addRoutine()
+    public void addRoutine(View view)
     {
         Intent intent = new Intent(this, EditRoutineActivity.class);
         startActivity(intent);
     }
 
-    public void startFreeWorkout()
+    public void startFreeWorkout(View view)
     {
         Intent intent = new Intent(this, WorkoutActivity.class);
         startActivity(intent);
     }
 
-    public void plateCalculator()
+    public void plateCalculator(View view)
     {
         new PlateCalcDialog(this).show();
     }
