@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="vh"
+            type="com.jorbital.gymstat.views.ExerciseViewHolder"/>
+    </data>
+
     <android.support.constraint.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/listPreferredItemHeightSmall"
         android:background="?attr/selectableItemBackground"
-        android:clickable="true">
+        android:clickable="true"
+        android:onClick="@{(view) -> vh.itemClicked(view)}"
+        android:onLongClick="@{(view) -> vh.itemLongClicked(view)}">
 
         <TextView
             android:id="@+id/exerciseName"

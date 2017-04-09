@@ -1,7 +1,6 @@
 package com.jorbital.gymstat.views;
 
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -11,7 +10,7 @@ import com.jorbital.gymstat.databinding.ExerciseListItemBinding;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
-class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject, ExerciseListAdapter.ExerciseViewHolder>
+class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject, ExerciseViewHolder>
 {
 
     private OrderedRealmCollection<ExerciseObject> mData;
@@ -40,22 +39,5 @@ class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject, Exerc
     public int getItemCount()
     {
         return mData.size();
-    }
-
-    class ExerciseViewHolder extends RecyclerView.ViewHolder
-    {
-        private final ExerciseListItemBinding b;
-
-        ExerciseViewHolder(ExerciseListItemBinding binding)
-        {
-            super(binding.getRoot());
-            this.b = binding;
-        }
-
-        void bind(ExerciseObject item)
-        {
-            b.exerciseName.setText(item.getName());
-            b.executePendingBindings();
-        }
     }
 }

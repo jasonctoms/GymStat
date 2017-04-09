@@ -10,8 +10,6 @@ import android.widget.Toast;
 import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.data.ExerciseObject;
 import com.jorbital.gymstat.databinding.ActivityExerciseListBinding;
-import com.jorbital.gymstat.utils.RecyclerViewClickListener;
-import com.jorbital.gymstat.utils.RecyclerViewTouchListener;
 import com.jorbital.gymstat.viewmodels.ExerciseListViewModel;
 
 import io.realm.OrderedRealmCollection;
@@ -39,24 +37,6 @@ public class ExerciseListActivity extends AppCompatActivity
         b.exerciseRv.setHasFixedSize(true);
         b.exerciseRv.setAdapter(new ExerciseListAdapter(allExercises, true));
         b.exerciseRv.setLayoutManager(new LinearLayoutManager(this));
-
-        b.exerciseRv.addOnItemTouchListener(new RecyclerViewTouchListener(this,
-                b.exerciseRv, new RecyclerViewClickListener()
-        {
-            @Override
-            public void onClick(View view, final int position)
-            {
-                Toast.makeText(ExerciseListActivity.this, "Single Click on position: " + position,
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onLongClick(View view, int position)
-            {
-                Toast.makeText(ExerciseListActivity.this, "Long press on position: " + position,
-                        Toast.LENGTH_LONG).show();
-            }
-        }));
     }
 
     private void CreateViewModel()
