@@ -7,15 +7,23 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.jorbital.gymstat.R;
+import com.jorbital.gymstat.data.Routine;
 import com.jorbital.gymstat.databinding.ActivityRoutinesBinding;
+import com.jorbital.gymstat.viewmodels.RoutinesViewModel;
+
+import io.realm.OrderedRealmCollection;
+import io.realm.Realm;
 
 public class RoutinesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
+    private OrderedRealmCollection<Routine> allRoutines;
+    private Realm realm;
     ActivityRoutinesBinding b;
 
     @Override
@@ -33,6 +41,24 @@ public class RoutinesActivity extends AppCompatActivity
         toggle.syncState();
 
         b.navView.setNavigationItemSelectedListener(this);
+
+        realm = Realm.getDefaultInstance();
+
+        CreateViewModel();
+
+        if (allRoutines.isEmpty())
+            b.noRoutinesLayout.setVisibility(View.VISIBLE);
+
+        b.routinesRv.setHasFixedSize(true);
+        b.routinesRv.setAdapter(new RoutinesAdapter(allRoutines, true));
+        b.routinesRv.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void CreateViewModel()
+    {
+        RoutinesViewModel vm = new RoutinesViewModel(realm);
+        vm.makeListOfRoutines();
+        allRoutines = vm.getAllRoutines();
     }
 
     @Override
@@ -100,5 +126,13 @@ public class RoutinesActivity extends AppCompatActivity
     public void plateCalculator(View view)
     {
         new PlateCalcDialog(this).show();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        b.routinesRv.setAdapter(null);
+        realm.close();
     }
 }

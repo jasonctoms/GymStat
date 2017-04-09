@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="vh"
+            type="com.jorbital.gymstat.views.RoutineViewHolder"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/routineItem"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/listPreferredItemHeightSmall"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:onClick="@{(view) -> vh.itemClicked(view)}"
+        android:onLongClick="@{(view) -> vh.itemLongClicked(view)}">
+
+        <TextView
+            android:id="@+id/routineName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+            android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Routine Name"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

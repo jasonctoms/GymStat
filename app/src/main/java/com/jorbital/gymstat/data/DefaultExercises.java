@@ -3,11 +3,15 @@ package com.jorbital.gymstat.data;
 import android.content.Context;
 
 import com.jorbital.gymstat.R;
+import com.jorbital.gymstat.utils.DayOfWeekRealm;
+
+import org.threeten.bp.DayOfWeek;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class DefaultExercises
 {
@@ -22,6 +26,18 @@ public class DefaultExercises
             @Override
             public void execute(Realm realm) {
                 realm.delete(ExerciseObject.class);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.delete(Routine.class);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.delete(DayOfWeekRealm.class);
             }
         });
 
@@ -67,6 +83,11 @@ public class DefaultExercises
 
         for(String name : defaultExercises)
             addDefaultExercise(name);
+
+        createDayOfWeekRealmObjects();
+
+        //TODO: remove this later
+        addTestRoutines();
     }
 
     private void addDefaultExercise(String name)
@@ -80,6 +101,133 @@ public class DefaultExercises
                 ExerciseObject e = realm.createObject(ExerciseObject.class);
                 e.setName(exerciseName);
                 //TODO: set image and muscle groups
+            }
+        });
+    }
+
+    private void createDayOfWeekRealmObjects()
+    {
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                DayOfWeekRealm monday = realm.createObject(DayOfWeekRealm.class);
+                monday.setEnum(DayOfWeek.MONDAY);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                DayOfWeekRealm tuesday = realm.createObject(DayOfWeekRealm.class);
+                tuesday.setEnum(DayOfWeek.TUESDAY);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                DayOfWeekRealm wednesday = realm.createObject(DayOfWeekRealm.class);
+                wednesday.setEnum(DayOfWeek.WEDNESDAY);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                DayOfWeekRealm thursday = realm.createObject(DayOfWeekRealm.class);
+                thursday.setEnum(DayOfWeek.THURSDAY);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                DayOfWeekRealm friday = realm.createObject(DayOfWeekRealm.class);
+                friday.setEnum(DayOfWeek.FRIDAY);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                DayOfWeekRealm saturday = realm.createObject(DayOfWeekRealm.class);
+                saturday.setEnum(DayOfWeek.SATURDAY);
+            }
+        });
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                DayOfWeekRealm sunday = realm.createObject(DayOfWeekRealm.class);
+                sunday.setEnum(DayOfWeek.SUNDAY);
+            }
+        });
+    }
+
+    private void addTestRoutines()
+    {
+        //before you can add objects to lists in realm, the objects must exist in realm.
+        //this is why things have to be done in multiple transactions
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                RealmResults<ExerciseObject> exercises = realm.where(ExerciseObject.class).findAll();
+                Exercise exercise1 = realm.createObject(Exercise.class);
+                exercise1.setExerciseType(exercises.get(0));
+                exercise1.setNumberOfSets(4);
+
+                Exercise exercise2 = realm.createObject(Exercise.class);
+                exercise2.setExerciseType(exercises.get(1));
+                exercise2.setNumberOfSets(3);
+
+                Exercise exercise3 = realm.createObject(Exercise.class);
+                exercise3.setExerciseType(exercises.get(2));
+                exercise3.setNumberOfSets(2);
+
+                Exercise exercise4 = realm.createObject(Exercise.class);
+                exercise4.setExerciseType(exercises.get(3));
+                exercise4.setNumberOfSets(1);
+            }
+        });
+
+        mRealm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                Routine routine1 = realm.createObject(Routine.class);
+                routine1.setName("Test routine 1");
+
+                RealmResults<DayOfWeekRealm> monday = realm.where(DayOfWeekRealm.class).equalTo("enumDescription", "MONDAY").findAll();
+                RealmResults<DayOfWeekRealm> wednesday = realm.where(DayOfWeekRealm.class).equalTo("enumDescription", "WEDNESDAY").findAll();
+                routine1.getDays().add(monday.get(0));
+                routine1.getDays().add(wednesday.get(0));
+
+                RealmResults<Exercise> exercises = realm.where(Exercise.class).findAll();
+                routine1.getExercises().add(exercises.get(0));
+                routine1.getExercises().add(exercises.get(1));
+
+
+                Routine routine2 = realm.createObject(Routine.class);
+                routine2.setName("Test routine 2");
+
+                RealmResults<DayOfWeekRealm> tuesday = realm.where(DayOfWeekRealm.class).equalTo("enumDescription", "TUESDAY").findAll();
+                RealmResults<DayOfWeekRealm> thursday = realm.where(DayOfWeekRealm.class).equalTo("enumDescription", "THURSDAY").findAll();
+                routine2.getDays().add(tuesday.get(0));
+                routine2.getDays().add(thursday.get(0));
+
+                routine2.getExercises().add(exercises.get(2));
+                routine2.getExercises().add(exercises.get(3));
             }
         });
     }
