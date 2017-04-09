@@ -1,4 +1,36 @@
 <resources>
 
-    <string name="action_settings">Instillinger</string>
+    <string name="nav_drawer_settings">Instillinger</string>
+    <string name="e_bb_bench">Barbell Benkpress</string>
+    <string name="e_db_bench">Dumbbell Benkpress</string>
+    <string name="e_bb_bicep_curl">Barbell Biceps Curl</string>
+    <string name="e_bb_decline_bench">Barbell Nedgang Benkpress</string>
+    <string name="e_bb_incline_bench">Barbell Skrå Benkpress</string>
+    <string name="e_bb_shoulder_press_seated">Sittende Barbell Skulder Trykk</string>
+    <string name="e_bb_shoulder_press_standing">Stående Barbell Skulder Trykk</string>
+    <string name="e_bb_squat">Barbell Squat</string>
+    <string name="e_bb_tricep_extension">Barbell Ttriceps Forlengelse</string>
+    <string name="e_db_bicep_curl">Dumbbell Biceps Curl</string>
+    <string name="e_db_decline_bench">Dumbbell Nedgang Benkpress</string>
+    <string name="e_db_incline_bench">Dumbbell Skrå Benkpress</string>
+    <string name="e_db_shoulder_press_seated">Sittende Dumbbell Skulder Trykk</string>
+    <string name="e_db_shoulder_press_standing">Stående Dumbbell Skulder Trykk</string>
+    <string name="e_db_squat">Dumbbell Squat</string>
+    <string name="e_db_tricep_extension">Dumbbell Ttriceps Forlengelse</string>
+    <string name="e_lat_pulldown">Lat Pulldown</string>
+    <string name="e_side_lateral_raise">Side Lateral Heve</string>
+    <string name="edit_routine_title">Redigere rutine</string>
+    <string name="exercise_list_activity_title">Velg en øvelse</string>
+    <string name="nav_drawer_libraries">Tredjeparts biblioteker</string>
+    <string name="plate_calc_bar_weight">Bar Vekt:</string>
+    <string name="plate_calc_title">Plate Kalkulator</string>
+    <string name="pref_weight_selected_units">Valgt vektenheter</string>
+    <string name="routines_add_exercise">Leg til øvelse</string>
+    <string name="workout_add_exercise">Leg til øvelse</string>
+    <string name="settings_activity_title">Instillinger</string>
+    <string name="settings_units">Enheter</string>
+    <string name="routines_or_text">eller</string>
+    <string name="routines_free_workout">Starte trening uten</string>
+    <string name="routines_new_routine">Opprete ny rutine</string>
+    <string name="routines_no_routines">Du har ingen lagrede rutiner.</string>
 </resources>

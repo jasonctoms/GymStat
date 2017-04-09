@@ -52,7 +52,7 @@ public class PlateCalcDialog extends Dialog
 
         setPreferences();
 
-        mBarString = mContext.getResources().getString(R.string.bar_weight);
+        mBarString = mContext.getResources().getString(R.string.plate_calc_bar_weight);
 
         updatePlateViews(mNumOfPlate1, mNumOfPlate2, mNumOfPlate3, mNumOfPlate4, mNumOfPlate5, mNumOfPlate6);
         if(mWeightUnits.equals("Kilograms"))

@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/no_routines"
+                        android:text="@string/routines_no_routines"
                         android:textColor="?android:attr/textColorPrimary"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -72,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:onClick="@{activity::addRoutine}"
-                        android:text="@string/new_routine"
+                        android:text="@string/routines_new_routine"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -83,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="@string/or_text"
+                        android:text="@string/routines_or_text"
                         android:textColor="?android:attr/textColorPrimary"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -97,7 +97,7 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="4dp"
                         android:onClick="@{activity::startFreeWorkout}"
-                        android:text="@string/free_workout"
+                        android:text="@string/routines_free_workout"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -139,7 +139,7 @@
                     android:src="@drawable/ic_weight"
                     app:fab_colorNormal="@color/colorAccentAnalogBlue"
                     app:fab_colorPressed="@color/colorAccentAnalogBlueLight"
-                    fab:fab_label="@string/free_workout"
+                    fab:fab_label="@string/routines_free_workout"
                     fab:fab_size="mini"/>
 
                 <com.github.clans.fab.FloatingActionButton
@@ -150,7 +150,7 @@
                     android:src="@drawable/ic_routine"
                     app:fab_colorNormal="@color/colorAccentAnalogGreen"
                     app:fab_colorPressed="@color/colorAccentAnalogGreenLight"
-                    fab:fab_label="@string/new_routine"
+                    fab:fab_label="@string/routines_new_routine"
                     fab:fab_size="mini"/>
 
             </com.github.clans.fab.FloatingActionMenu>

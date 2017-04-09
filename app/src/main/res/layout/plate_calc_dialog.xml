@@ -241,7 +241,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:text="@string/plate_calculator"
+            android:text="@string/plate_calc_title"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/barTypeSwitch"

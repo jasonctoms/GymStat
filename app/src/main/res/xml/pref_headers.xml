@@ -10,7 +10,7 @@
     <header
         android:fragment="com.jorbital.gymstat.views.SettingsActivity$UnitsPreferenceFragment"
         android:icon="@drawable/ic_ruler"
-        android:title="@string/units"/>
+        android:title="@string/settings_units"/>
 
     <header
         android:fragment="com.jorbital.gymstat.views.SettingsActivity$NotificationPreferenceFragment"

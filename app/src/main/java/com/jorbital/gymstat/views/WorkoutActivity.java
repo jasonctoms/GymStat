@@ -22,6 +22,8 @@ public class WorkoutActivity extends AppCompatActivity
         b.setActivity(this);
 
         setSupportActionBar(b.toolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle("Some workout");
     }
 
     public void addExercise(View view)

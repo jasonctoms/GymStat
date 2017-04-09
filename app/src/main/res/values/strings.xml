@@ -1,28 +1,35 @@
 <resources>
     <string name="app_name" translatable="false">GymStat</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- Navigation Drawer -->
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_drawer_settings">Settings</string>
+    <string name="nav_drawer_libraries">Third party libraries</string>
 
-    <string name="action_settings">Settings</string>
+    <!-- Routines Activity -->
+    <string name="routines_free_workout">Start free workout</string>
+    <string name="routines_new_routine">Create new routine</string>
+    <string name="routines_no_routines">You have no saved routines.</string>
+    <string name="routines_or_text">or</string>
+    <string name="routines_add_exercise">Add exercise</string>
 
-    <string name="third_party_libraries">Third party libraries</string>
-    <string name="free_workout">Start free workout</string>
-    <string name="new_routine">Create new routine</string>
-    <string name="no_routines">You have no saved routines.</string>
-    <string name="or_text">or</string>
-    <string name="edit_routine">Edit routine</string>
-    <string name="title_activity_workout">WorkoutActivity</string>
-    <string name="add_exercise">Add exercise</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_exercise_list">Pick an Exercise</string>
+    <!-- Edit Routine Activity -->
+    <string name="edit_routine_title">Edit routine</string>
 
-    <string name="bar_weight">Bar Weight:\u0020</string>
-    <string name="plate_calculator">Plate Calculator</string>
+    <!-- Workout Activity -->
+    <string name="workout_add_exercise">Add exercise</string>
 
+    <!-- Exercise List Activity -->
+    <string name="exercise_list_activity_title">Pick an Exercise</string>
+
+    <!-- Plate Calc Dialog -->
+    <string name="plate_calc_bar_weight">Bar Weight:\u0020</string>
+    <string name="plate_calc_title">Plate Calculator</string>
 
     <!-- Strings related to Settings -->
-    <string name="units">Units</string>
+    <string name="settings_activity_title">Settings</string>
+    <string name="settings_units">Units</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
@@ -56,7 +63,7 @@
         <item>0</item>
         <item>1</item>
     </string-array>
-    <string name="pref_default_weight_units">Default weight units</string>
+    <string name="pref_weight_selected_units">Selected weight units</string>
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
@@ -100,26 +107,24 @@
     <string name="pref_ringtone_silent">Silent</string>
     <string name="pref_title_vibrate">Vibrate</string>
 
-
     <!-- Default Exercises -->
-    <string name="bb_bench">Barbell Bench Press</string>
-    <string name="db_bench">Dumbbell Bench Press</string>
-    <string name="bb_squat">Barbell Squat</string>
-    <string name="db_squat">Dumbbell Squat</string>
-    <string name="bb_incline_bench">Barbell Incline Bench Press</string>
-    <string name="db_incline_bench">Dumbbell Incline Bench Press</string>
-    <string name="bb_decline_bench">Barbell Decline Bench Press</string>
-    <string name="db_decline_bench">Dumbbell Decline Bench Press</string>
-    <string name="bb_shoulder_press_standing">Standing Barbell Shoulder Press</string>
-    <string name="db_shoulder_press_standing">Standing Dumbbell Shoulder Press</string>
-    <string name="bb_shoulder_press_seated">Seated Barbell Shoulder Press</string>
-    <string name="db_shoulder_press_seated">Seated Dumbbell Shoulder Press</string>
-    <string name="bb_bicep_curl">Barbell Bicep Curl</string>
-    <string name="db_bicep_curl">Dumbbell Bicep Curl</string>
-    <string name="side_lateral_raise">Side Lateral Raise</string>
-    <string name="lat_pulldown">Lat Pulldown</string>
-    <string name="bb_tricep_extension">Barbell Tricep Extension</string>
-    <string name="db_tricep_extension">Dumbbell Tricep Extension</string>
-
+    <string name="e_bb_bench">Barbell Bench Press</string>
+    <string name="e_db_bench">Dumbbell Bench Press</string>
+    <string name="e_bb_squat">Barbell Squat</string>
+    <string name="e_db_squat">Dumbbell Squat</string>
+    <string name="e_bb_incline_bench">Barbell Incline Bench Press</string>
+    <string name="e_db_incline_bench">Dumbbell Incline Bench Press</string>
+    <string name="e_bb_decline_bench">Barbell Decline Bench Press</string>
+    <string name="e_db_decline_bench">Dumbbell Decline Bench Press</string>
+    <string name="e_bb_shoulder_press_standing">Standing Barbell Shoulder Press</string>
+    <string name="e_db_shoulder_press_standing">Standing Dumbbell Shoulder Press</string>
+    <string name="e_bb_shoulder_press_seated">Seated Barbell Shoulder Press</string>
+    <string name="e_db_shoulder_press_seated">Seated Dumbbell Shoulder Press</string>
+    <string name="e_bb_bicep_curl">Barbell Bicep Curl</string>
+    <string name="e_db_bicep_curl">Dumbbell Bicep Curl</string>
+    <string name="e_side_lateral_raise">Side Lateral Raise</string>
+    <string name="e_lat_pulldown">Lat Pulldown</string>
+    <string name="e_bb_tricep_extension">Barbell Tricep Extension</string>
+    <string name="e_db_tricep_extension">Dumbbell Tricep Extension</string>
 
 </resources>
