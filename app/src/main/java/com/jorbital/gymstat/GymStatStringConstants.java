@@ -11,4 +11,8 @@ public class GymStatStringConstants
     public static final String POUNDS = "Pounds";
     public static final String KILOGRAMS = "Kilograms";
 
+
+    //Bundle keys
+    public static final String SELECTED_ROUTINE = "SELECTED_ROUTINE";
+
 }

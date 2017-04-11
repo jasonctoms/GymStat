@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jorbital.gymstat.GymStatStringConstants;
 import com.jorbital.gymstat.data.Routine;
 import com.jorbital.gymstat.databinding.RoutinesListItemBinding;
 
@@ -64,6 +65,8 @@ public class RoutinesAdapter extends RealmRecyclerViewAdapter<Routine, RoutinesA
         public void itemClicked(View v)
         {
             Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
+            String selectedKey = mData.get(getAdapterPosition()).getIdKey();
+            intent.putExtra(GymStatStringConstants.SELECTED_ROUTINE, selectedKey);
             v.getContext().startActivity(intent);
         }
     }
