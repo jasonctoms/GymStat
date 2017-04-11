@@ -4,7 +4,7 @@
     <data>
         <variable
             name="vh"
-            type="com.jorbital.gymstat.views.ExerciseViewHolder"/>
+            type="com.jorbital.gymstat.views.ExerciseListAdapter.ExerciseViewHolder"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

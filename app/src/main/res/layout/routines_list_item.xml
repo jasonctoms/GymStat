@@ -4,7 +4,7 @@
     <data>
         <variable
             name="vh"
-            type="com.jorbital.gymstat.views.RoutineViewHolder"/>
+            type="com.jorbital.gymstat.views.RoutinesAdapter.RoutineViewHolder"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -15,8 +15,7 @@
         android:layout_height="?attr/listPreferredItemHeightSmall"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:onClick="@{(view) -> vh.itemClicked(view)}"
-        android:onLongClick="@{(view) -> vh.itemLongClicked(view)}">
+        android:onClick="@{(view) -> vh.itemClicked(view)}">
 
         <TextView
             android:id="@+id/routineName"
