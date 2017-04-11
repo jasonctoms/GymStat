@@ -4,12 +4,21 @@ import com.jorbital.gymstat.utils.DayOfWeekRealm;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Routine extends RealmObject
 {
+    @PrimaryKey
+    private String idKey;
+
     private String name;
     private RealmList<DayOfWeekRealm> days;
     private RealmList<Exercise> exercises;
+
+    public String getIdKey()
+    {
+        return idKey;
+    }
 
     public String getName()
     {

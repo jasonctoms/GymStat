@@ -4,15 +4,15 @@ import io.realm.RealmObject;
 
 public class WeightUnitRealm extends RealmObject
 {
-    private String enumDescription;
+    private String weightUnit;
 
     public void setEnum(GymStatEnums.WeightUnit val)
     {
-        this.enumDescription = val.toString();
+        this.weightUnit = val.toString();
     }
 
     public GymStatEnums.WeightUnit getEnum()
     {
-        return GymStatEnums.WeightUnit.valueOf(enumDescription);
+        return GymStatEnums.WeightUnit.valueOf(weightUnit);
     }
 }

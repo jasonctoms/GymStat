@@ -4,13 +4,13 @@ import io.realm.RealmObject;
 
 public class MuscleGroupRealm extends RealmObject
 {
-    private String enumDescription;
+    private String muscleGroup;
 
     public void setEnum(GymStatEnums.MuscleGroup val) {
-        this.enumDescription = val.toString();
+        this.muscleGroup = val.toString();
     }
 
     public GymStatEnums.MuscleGroup getEnum() {
-        return GymStatEnums.MuscleGroup.valueOf(enumDescription);
+        return GymStatEnums.MuscleGroup.valueOf(muscleGroup);
     }
 }

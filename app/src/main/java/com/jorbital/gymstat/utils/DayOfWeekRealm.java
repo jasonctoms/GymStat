@@ -6,15 +6,15 @@ import io.realm.RealmObject;
 
 public class DayOfWeekRealm extends RealmObject
 {
-    private String enumDescription;
+    private String dayOfWeek;
 
     public void setEnum(DayOfWeek val)
     {
-        this.enumDescription = val.toString();
+        this.dayOfWeek = val.toString();
     }
 
     public DayOfWeek getEnum()
     {
-        return DayOfWeek.valueOf(enumDescription);
+        return DayOfWeek.valueOf(dayOfWeek);
     }
 }

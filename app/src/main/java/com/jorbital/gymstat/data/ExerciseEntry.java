@@ -5,15 +5,24 @@ import com.jorbital.gymstat.utils.WeightUnitRealm;
 import java.util.Date;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class ExerciseEntry extends RealmObject
 {
+    @PrimaryKey
+    private String idKey;
+
     private Date date;
     private int setNumber;
     private double weight;
     private WeightUnitRealm unit;
     private int numberOfReps;
     private boolean bestSet;
+
+    public String getIdKey()
+    {
+        return idKey;
+    }
 
     public Date getDate()
     {

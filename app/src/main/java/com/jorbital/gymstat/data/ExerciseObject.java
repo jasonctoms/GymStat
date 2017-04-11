@@ -4,13 +4,22 @@ import com.jorbital.gymstat.utils.MuscleGroupRealm;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 
 public class ExerciseObject extends RealmObject
 {
+    @PrimaryKey
+    private String idKey;
+
     private String name;
     private RealmList<MuscleGroupRealm> muscleGroup;
     private int imageResource;
+
+    public String getIdKey()
+    {
+        return idKey;
+    }
 
     public String getName()
     {
