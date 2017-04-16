@@ -2,56 +2,50 @@ package com.jorbital.gymstat.views;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
 
 import com.jorbital.gymstat.R;
-import com.jorbital.gymstat.data.ExerciseObject;
 import com.jorbital.gymstat.databinding.ActivityExerciseListBinding;
+import com.jorbital.gymstat.utils.BaseActivityWithNavDrawer;
 import com.jorbital.gymstat.viewmodels.ExerciseListViewModel;
 
-import io.realm.OrderedRealmCollection;
-import io.realm.Realm;
-
-public class ExerciseListActivity extends AppCompatActivity
+public class ExerciseListActivity extends BaseActivityWithNavDrawer
 {
-    private OrderedRealmCollection<ExerciseObject> allExercises;
-    private Realm realm;
     private ActivityExerciseListBinding b;
+    private ExerciseListViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        b = DataBindingUtil.setContentView(this, R.layout.activity_exercise_list);
-        b.setActivity(this);
-
-        setSupportActionBar(b.toolbar);
-
-        realm = Realm.getDefaultInstance();
-
-        CreateViewModel();
 
         b.exerciseRv.setHasFixedSize(true);
-        b.exerciseRv.setAdapter(new ExerciseListAdapter(allExercises, true));
         b.exerciseRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void CreateViewModel()
+    @Override
+    protected void setLayout()
     {
-        ExerciseListViewModel vm = new ExerciseListViewModel(realm);
-        vm.makeListOfExercises();
-        allExercises = vm.getAllExercises();
+        b = DataBindingUtil.setContentView(this, R.layout.activity_exercise_list);
+        b.setActivity(this);
     }
 
     @Override
-    protected void onDestroy()
+    protected void createViewModel()
     {
-        super.onDestroy();
-        b.exerciseRv.setAdapter(null);
-        realm.close();
+        vm = new ExerciseListViewModel(realm);
+        vm.makeListOfExercises();
+    }
+
+    @Override
+    protected void updateViewFromViewModel()
+    {
+        if (b.exerciseRv.getAdapter() == null)
+            b.exerciseRv.setAdapter(new ExerciseListAdapter(vm.getAllExercises(), true));
+        //else
+           //update list
     }
 
     public void fabClicked(View view)

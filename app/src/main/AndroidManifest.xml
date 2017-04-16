@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".views.EditRoutineActivity"
-            android:label="@string/edit_routine_title">
+            android:label="@string/edit_routine_title"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".views.WorkoutActivity"

@@ -13,36 +13,43 @@ import com.jorbital.gymstat.viewmodels.RoutinesViewModel;
 
 public class RoutinesActivity extends BaseActivityWithNavDrawer
 {
-    ActivityRoutinesBinding b;
-    RoutinesViewModel vm;
+    private ActivityRoutinesBinding b;
+    private RoutinesViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        CreateViewModel();
-
         if (vm.getAllRoutines().isEmpty())
             b.noRoutinesLayout.setVisibility(View.VISIBLE);
 
         b.routinesRv.setHasFixedSize(true);
-        b.routinesRv.setAdapter(new RoutinesAdapter(vm.getAllRoutines(), true));
+
         b.routinesRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
-    protected void CreateViewModel()
+    protected void setLayout()
+    {
+        b = DataBindingUtil.setContentView(this, R.layout.activity_routines);
+        b.setActivity(this);
+    }
+
+    @Override
+    protected void createViewModel()
     {
         vm = new RoutinesViewModel(realm);
         vm.makeListOfRoutines();
     }
 
     @Override
-    protected void SetLayout()
+    protected void updateViewFromViewModel()
     {
-        b = DataBindingUtil.setContentView(this, R.layout.activity_routines);
-        b.setActivity(this);
+        if (b.routinesRv.getAdapter() == null)
+            b.routinesRv.setAdapter(new RoutinesAdapter(vm.getAllRoutines(), true));
+        //else
+           //update the list
     }
 
     public void addRoutine(View view)

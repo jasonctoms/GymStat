@@ -1,17 +1,16 @@
 package com.jorbital.gymstat.viewmodels;
 
-
 import com.jorbital.gymstat.data.Exercise;
 import com.jorbital.gymstat.data.Routine;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 
-public class WorkoutViewModel
+public class EditRoutineViewModel
 {
     private Realm realm;
     private Routine selectedRoutine;
-    private OrderedRealmCollection<Exercise> workoutExercises;
+    private OrderedRealmCollection<Exercise> routineExercises;
 
     public Routine getSelectedRoutine()
     {
@@ -22,16 +21,16 @@ public class WorkoutViewModel
         this.selectedRoutine = realm.where(Routine.class).equalTo("idKey", key).findFirst();
     }
 
-    public OrderedRealmCollection<Exercise> getWorkoutExercises()
+    public OrderedRealmCollection<Exercise> getRoutineExercises()
     {
-        return workoutExercises;
+        return routineExercises;
     }
-    private void setWorkoutExercises(OrderedRealmCollection<Exercise> workoutExercises)
+    private void setRoutineExercises(OrderedRealmCollection<Exercise> routineExercises)
     {
-        this.workoutExercises = workoutExercises;
+        this.routineExercises = routineExercises;
     }
 
-    public WorkoutViewModel(Realm r)
+    public EditRoutineViewModel(Realm r)
     {
         realm = r;
     }
@@ -44,6 +43,6 @@ public class WorkoutViewModel
 
     private void makeListOfExercises()
     {
-        setWorkoutExercises(selectedRoutine.getExercises());
+        setRoutineExercises(selectedRoutine.getExercises());
     }
 }

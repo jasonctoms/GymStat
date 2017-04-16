@@ -32,10 +32,13 @@ public abstract class BaseActivityWithNavDrawer extends AppCompatActivity implem
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        SetLayout();
+        setLayout();
 
+        /* set the realm instance for the activity and then create
+        the viewmodel from the parameters obtained from intents */
         realm = Realm.getDefaultInstance();
-        CreateViewModel();
+        createViewModel();
+        updateViewFromViewModel();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navView = (NavigationView) findViewById(R.id.navView);
@@ -51,9 +54,18 @@ public abstract class BaseActivityWithNavDrawer extends AppCompatActivity implem
         navView.setNavigationItemSelectedListener(this);
     }
 
-    protected abstract void SetLayout();
+    /* method that must be overridden that sets the content view of
+     * the selected activity (activity must have navigation view and
+     * drawer layouts in its own xml layout file) */
+    protected abstract void setLayout();
 
-    protected abstract void CreateViewModel();
+    /* method that must be overridden that creates the viewmodel
+     * using a realm instance and any other parameters necessary */
+    protected abstract void createViewModel();
+
+    /* method that must be overridden that uses data from the viewmodel
+     * to update the view */
+    protected abstract void updateViewFromViewModel();
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

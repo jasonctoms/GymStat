@@ -33,4 +33,5 @@
     <string name="routines_free_workout">Starte trening uten</string>
     <string name="routines_new_routine">Opprete ny rutine</string>
     <string name="routines_no_routines">Du har ingen lagrede rutiner.</string>
+    <string name="workout_free_workout">Trening uten</string>
 </resources>
