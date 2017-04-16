@@ -13,6 +13,9 @@
     <string name="routines_no_routines">You have no saved routines.</string>
     <string name="routines_or_text">or</string>
     <string name="routines_add_exercise">Add exercise</string>
+    <string name="routines_last_performed" formatted="false">Last Performed: %d days ago</string>
+    <string name="routines_number_sets" formatted="false">x %d sets</string>
+    <string name="routines_start_routine">Start routine</string>
 
     <!-- Edit Routine Activity -->
     <string name="edit_routine_title">Edit routine</string>

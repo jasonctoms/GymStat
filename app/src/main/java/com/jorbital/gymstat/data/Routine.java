@@ -12,6 +12,7 @@ public class Routine extends RealmObject
     private String idKey;
 
     private String name;
+    private String lastCompletedDate;
     private RealmList<DayOfWeekRealm> days;
     private RealmList<Exercise> exercises;
 
@@ -27,6 +28,15 @@ public class Routine extends RealmObject
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public String getLastCompletedDate()
+    {
+        return lastCompletedDate;
+    }
+    public void setLastCompletedDate(String lastCompletedDate)
+    {
+        this.lastCompletedDate = lastCompletedDate;
     }
 
     public RealmList<DayOfWeekRealm> getDays()

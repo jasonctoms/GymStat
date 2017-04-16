@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -7,26 +9,68 @@
             type="com.jorbital.gymstat.views.RoutinesAdapter.RoutineViewHolder"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/routineItem"
+    <android.support.v7.widget.CardView
+        android:id="@+id/routinesCard"
         android:layout_width="match_parent"
-        android:layout_height="?attr/listPreferredItemHeightSmall"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:onClick="@{(view) -> vh.itemClicked(view)}">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp">
 
-        <TextView
-            android:id="@+id/routineName"
-            android:layout_width="0dp"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/routineItem"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-            android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Routine Name"/>
-    </android.support.constraint.ConstraintLayout>
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:onClick="@{(view) -> vh.itemClicked(view)}">
+
+            <TextView
+                android:id="@+id/routineName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="24sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Routine Name"/>
+
+            <TextView
+                android:id="@+id/lastPerformed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/routineName"
+                tools:text="Last Performed: XX days ago"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/routineExercisesRV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                android:paddingTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lastPerformed"/>
+
+            <Button
+                android:id="@+id/startRoutineButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/routines_start_routine"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/routineExercisesRV"
+                android:onClick="@{(view) -> vh.buttonClicked(view)}"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 </layout>

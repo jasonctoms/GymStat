@@ -6,6 +6,7 @@ import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.utils.DayOfWeekRealm;
 
 import org.threeten.bp.DayOfWeek;
+import org.threeten.bp.LocalDateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -202,6 +203,9 @@ public class DefaultExercises
                 routine1.getDays().add(monday.get(0));
                 routine1.getDays().add(wednesday.get(0));
 
+                LocalDateTime routine1Date = LocalDateTime.of(2017, 3, 12, 0, 0, 0);
+                routine1.setLastCompletedDate(routine1Date.toString());
+
                 RealmResults<Exercise> exercises = realm.where(Exercise.class).findAll();
                 routine1.getExercises().add(exercises.get(0));
                 routine1.getExercises().add(exercises.get(1));
@@ -214,6 +218,9 @@ public class DefaultExercises
                 RealmResults<DayOfWeekRealm> thursday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", "THURSDAY").findAll();
                 routine2.getDays().add(tuesday.get(0));
                 routine2.getDays().add(thursday.get(0));
+
+                LocalDateTime routine2Date = LocalDateTime.of(2017, 4, 12, 0, 0, 0);
+                routine2.setLastCompletedDate(routine2Date.toString());
 
                 routine2.getExercises().add(exercises.get(2));
                 routine2.getExercises().add(exercises.get(3));

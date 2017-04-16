@@ -2,21 +2,26 @@ package com.jorbital.gymstat.views;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jorbital.gymstat.GymStatStringConstants;
+import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.data.Routine;
 import com.jorbital.gymstat.databinding.RoutinesListItemBinding;
+
+import org.threeten.bp.Duration;
+import org.threeten.bp.LocalDateTime;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
 public class RoutinesAdapter extends RealmRecyclerViewAdapter<Routine, RoutinesAdapter.RoutineViewHolder>
 {
-
     private OrderedRealmCollection<Routine> mData;
 
     RoutinesAdapter(@Nullable OrderedRealmCollection<Routine> data, boolean autoUpdate)
@@ -59,6 +64,18 @@ public class RoutinesAdapter extends RealmRecyclerViewAdapter<Routine, RoutinesA
         void bind(Routine item)
         {
             b.routineName.setText(item.getName());
+
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime then = LocalDateTime.parse(item.getLastCompletedDate());
+            int days = (int) Duration.between(then, now).toDays();
+            b.lastPerformed.setText(String.format(itemView.getContext().getString(R.string.routines_last_performed), days));
+
+            b.routineExercisesRV.setHasFixedSize(true);
+            b.routineExercisesRV.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
+                    LinearLayoutManager.VERTICAL, false));
+            b.routineExercisesRV.setNestedScrollingEnabled(false);
+            b.routineExercisesRV.setAdapter(new RoutineExerciseListAdapter(item.getExercises(), true));
+
             b.executePendingBindings();
         }
 
@@ -68,6 +85,12 @@ public class RoutinesAdapter extends RealmRecyclerViewAdapter<Routine, RoutinesA
             String selectedKey = mData.get(getAdapterPosition()).getIdKey();
             intent.putExtra(GymStatStringConstants.SELECTED_ROUTINE, selectedKey);
             v.getContext().startActivity(intent);
+        }
+
+        public void buttonClicked(View v)
+        {
+            Toast.makeText(v.getContext(), "This button start or stop the workout.",
+                    Toast.LENGTH_LONG).show();
         }
     }
 }
