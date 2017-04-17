@@ -16,6 +16,13 @@
     <string name="routines_last_performed" formatted="false">Last Performed: %d days ago</string>
     <string name="routines_number_sets" formatted="false">x %d sets</string>
     <string name="routines_start_routine">Start routine</string>
+    <string name="routines_monday">Mon</string>
+    <string name="routines_tuesday">Tue</string>
+    <string name="routines_wednesday">Wed</string>
+    <string name="routines_thursday">Thur</string>
+    <string name="routines_friday">Fri</string>
+    <string name="routines_saturday">Sat</string>
+    <string name="routines_sunday">Sun</string>
 
     <!-- Edit Routine Activity -->
     <string name="edit_routine_title">Edit routine</string>

@@ -8,4 +8,6 @@
     <color name="colorAccentAnalogBlueLight">#7facca</color>
     <color name="colorAccentAnalogGreen">#00963d</color>
     <color name="colorAccentAnalogGreenLight">#7fca9e</color>
+
+    <color name="disabledText">#80808080</color>
 </resources>
