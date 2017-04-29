@@ -14,11 +14,15 @@ public class ExerciseObject extends RealmObject
 
     private String name;
     private RealmList<MuscleGroupRealm> muscleGroup;
-    private int imageResource;
+    private String imagePath;
 
     public String getIdKey()
     {
         return idKey;
+    }
+    public void setIdKey(String idKey)
+    {
+        this.idKey = idKey;
     }
 
     public String getName()
@@ -39,12 +43,12 @@ public class ExerciseObject extends RealmObject
         this.muscleGroup = muscleGroup;
     }
 
-    public int getImageResource()
+    public String getImagePath()
     {
-        return imageResource;
+        return imagePath;
     }
-    public void setImageResource(int imageResource)
+    public void setImagePath(String imagePath)
     {
-        this.imageResource = imageResource;
+        this.imagePath = imagePath;
     }
 }
