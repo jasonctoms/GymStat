@@ -7,6 +7,8 @@ import com.jorbital.gymstat.data.Routine;
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 
+import static android.R.attr.id;
+
 public class WorkoutViewModel
 {
     private Realm realm;
@@ -45,5 +47,22 @@ public class WorkoutViewModel
     private void makeListOfExercises()
     {
         setWorkoutExercises(selectedRoutine.getExercises());
+    }
+
+    public void changeSetsForExercise(String exerciseId, int newValue)
+    {
+        if (newValue <= 0 || newValue >= 99) return;
+        final String id = exerciseId;
+        final int val = newValue;
+        realm.executeTransaction(new Realm.Transaction()
+        {
+            @Override
+            public void execute(Realm realm)
+            {
+                Exercise exercise = realm.where(Exercise.class).equalTo("idKey", id).findFirst();
+                exercise.setNumberOfSets(val);
+                realm.copyToRealmOrUpdate(exercise);
+            }
+        });
     }
 }

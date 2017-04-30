@@ -64,7 +64,32 @@ public class WorkoutActivity extends BaseActivityWithNavDrawer
         {
             //do not set an adapter if this is the start of a free workout
             if (vm.getWorkoutExercises() != null)
-                b.workoutRv.setAdapter(new WorkoutAdapter(vm.getWorkoutExercises(), true));
+            {
+                final WorkoutAdapter adapter = new WorkoutAdapter(vm.getWorkoutExercises(), true, vm);
+                b.workoutRv.setAdapter(adapter);
+
+                b.workoutRv.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+                {
+                    @Override
+                    public void onLayoutChange(View v,
+                                               int left, int top, int right, int bottom,
+                                               int oldLeft, int oldTop, int oldRight, int oldBottom)
+                    {
+                        if (bottom < oldBottom)
+                        {
+                            b.workoutRv.postDelayed(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    b.workoutRv.smoothScrollToPosition(
+                                            b.workoutRv.getAdapter().getItemCount() - 1);
+                                }
+                            }, 100);
+                        }
+                    }
+                });
+            }
         }
         //else
         //update the list

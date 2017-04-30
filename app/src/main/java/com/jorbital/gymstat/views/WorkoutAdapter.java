@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.jorbital.gymstat.data.Exercise;
 import com.jorbital.gymstat.databinding.WorkoutListItemBinding;
+import com.jorbital.gymstat.viewmodels.WorkoutViewModel;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
@@ -18,11 +19,13 @@ import io.realm.RealmRecyclerViewAdapter;
 public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAdapter.WorkoutViewHolder>
 {
     private OrderedRealmCollection<Exercise> mData;
+    private WorkoutViewModel mViewModel;
 
-    WorkoutAdapter(@Nullable OrderedRealmCollection<Exercise> data, boolean autoUpdate)
+    WorkoutAdapter(@Nullable OrderedRealmCollection<Exercise> data, boolean autoUpdate, WorkoutViewModel viewModel)
     {
         super(data, autoUpdate);
         mData = data;
+        mViewModel = viewModel;
     }
 
     @Override
@@ -54,6 +57,7 @@ public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAd
             super(binding.getRoot());
             this.b = binding;
             b.setVh(this);
+            b.setVm(mViewModel);
         }
 
         void bind(Exercise item)
@@ -71,18 +75,18 @@ public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAd
                     Toast.LENGTH_SHORT).show();
         }
 
-        public boolean decrementClicked(View v)
+        public void decrementClicked(View v)
         {
-            Toast.makeText(v.getContext(), "Decrement clicked on position: " + getAdapterPosition(),
-                    Toast.LENGTH_SHORT).show();
-            return true;
+            Exercise selectedItem = getItem(getAdapterPosition());
+            //noinspection ConstantConditions -- getIdKey cannot be null but the compiler doesn't know that
+            b.getVm().changeSetsForExercise(selectedItem.getIdKey(), selectedItem.getNumberOfSets() - 1);
         }
 
-        public boolean incrementClicked(View v)
+        public void incrementClicked(View v)
         {
-            Toast.makeText(v.getContext(), "Increment clicked on position: " + getAdapterPosition(),
-                    Toast.LENGTH_SHORT).show();
-            return true;
+            Exercise selectedItem = getItem(getAdapterPosition());
+            //noinspection ConstantConditions -- getIdKey cannot be null but the compiler doesn't know that
+            b.getVm().changeSetsForExercise(selectedItem.getIdKey(), selectedItem.getNumberOfSets() + 1);
         }
     }
 }
