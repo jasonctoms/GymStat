@@ -71,6 +71,7 @@
                     style="@android:style/Widget.DeviceDefault.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:onClick="@{activity::addExercise}"
                     android:text="@string/workout_add_exercise"
                     android:textColor="@color/colorAccent"
@@ -82,19 +83,15 @@
 
             </android.support.constraint.ConstraintLayout>
 
-            <com.github.clans.fab.FloatingActionButton
-                xmlns:fab="http://schemas.android.com/apk/res-auto"
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/workoutFab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fab_margin"
                 android:onClick="@{activity::startWorkout}"
-                android:src="@drawable/ic_add"
+                android:src="@drawable/ic_play"
                 app:layout_anchor="@id/app_bar"
-                app:layout_anchorGravity="bottom|end"
-                fab:fab_colorNormal="@color/colorAccent"
-                fab:fab_colorPressed="@color/colorAccentLight"
-                fab:fab_size="normal"/>
+                app:layout_anchorGravity="bottom|end"/>
 
         </android.support.design.widget.CoordinatorLayout>
 

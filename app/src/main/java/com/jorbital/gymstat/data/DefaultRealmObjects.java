@@ -546,8 +546,8 @@ public class DefaultRealmObjects
                 Routine routine1 = realm.createObject(Routine.class, UUID.randomUUID().toString());
                 routine1.setName("Test routine 1");
 
-                RealmResults<DayOfWeekRealm> monday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", "MONDAY").findAll();
-                RealmResults<DayOfWeekRealm> wednesday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", "WEDNESDAY").findAll();
+                RealmResults<DayOfWeekRealm> monday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", DayOfWeek.MONDAY.name()).findAll();
+                RealmResults<DayOfWeekRealm> wednesday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", DayOfWeek.WEDNESDAY.name()).findAll();
                 routine1.getDays().add(monday.get(0));
                 routine1.getDays().add(wednesday.get(0));
 
@@ -556,14 +556,16 @@ public class DefaultRealmObjects
 
                 RealmResults<Exercise> exercises = realm.where(Exercise.class).findAll();
                 routine1.getExercises().add(exercises.get(0));
+                exercises.get(0).setConnectedRoutine(routine1.getIdKey());
                 routine1.getExercises().add(exercises.get(1));
+                exercises.get(1).setConnectedRoutine(routine1.getIdKey());
 
 
                 Routine routine2 = realm.createObject(Routine.class, UUID.randomUUID().toString());
                 routine2.setName("Test routine 2");
 
-                RealmResults<DayOfWeekRealm> tuesday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", "TUESDAY").findAll();
-                RealmResults<DayOfWeekRealm> thursday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", "THURSDAY").findAll();
+                RealmResults<DayOfWeekRealm> tuesday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", DayOfWeek.TUESDAY.name()).findAll();
+                RealmResults<DayOfWeekRealm> thursday = realm.where(DayOfWeekRealm.class).equalTo("dayOfWeek", DayOfWeek.THURSDAY.name()).findAll();
                 routine2.getDays().add(tuesday.get(0));
                 routine2.getDays().add(thursday.get(0));
 
@@ -571,7 +573,9 @@ public class DefaultRealmObjects
                 routine2.setLastCompletedDate(routine2Date.toString());
 
                 routine2.getExercises().add(exercises.get(2));
+                exercises.get(2).setConnectedRoutine(routine2.getIdKey());
                 routine2.getExercises().add(exercises.get(3));
+                exercises.get(3).setConnectedRoutine(routine2.getIdKey());
             }
         });
     }

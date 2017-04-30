@@ -14,9 +14,20 @@ public class Exercise extends RealmObject
     private int numberOfSets;
     private RealmList<ExerciseEntry> exerciseEntries;
 
+    private String connectedRoutine;
+
     public String getIdKey()
     {
         return idKey;
+    }
+
+    public String getConnectedRoutine()
+    {
+        return connectedRoutine;
+    }
+    public void setConnectedRoutine(String connectedRoutine)
+    {
+        this.connectedRoutine = connectedRoutine;
     }
 
     public ExerciseObject getExerciseType()

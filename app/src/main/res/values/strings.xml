@@ -30,6 +30,9 @@
     <!-- Workout Activity -->
     <string name="workout_add_exercise">Add exercise</string>
     <string name="workout_free_workout">Free workout</string>
+    <string name="workout_sets">sets</string>
+    <string name="workout_increment_sets">increment sets</string>
+    <string name="workout_decrement_sets">decrement sets</string>
 
     <!-- Exercise List Activity -->
     <string name="exercise_list_activity_title">Pick an Exercise</string>

@@ -1,5 +1,6 @@
 package com.jorbital.gymstat.views;
 
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.jorbital.gymstat.data.Exercise;
 import com.jorbital.gymstat.databinding.WorkoutListItemBinding;
 
@@ -57,6 +59,9 @@ public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAd
         void bind(Exercise item)
         {
             b.workoutName.setText(item.getExerciseType().getName());
+            String path = item.getExerciseType().getImagePath();
+            Glide.with(itemView.getContext()).load(Uri.parse(path)).into(b.workoutImage);
+            b.numberOfSets.setText(String.valueOf(item.getNumberOfSets()));
             b.executePendingBindings();
         }
 
@@ -66,9 +71,16 @@ public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAd
                     Toast.LENGTH_SHORT).show();
         }
 
-        public boolean itemLongClicked(View v)
+        public boolean decrementClicked(View v)
         {
-            Toast.makeText(v.getContext(), "Long Click on position: " + getAdapterPosition(),
+            Toast.makeText(v.getContext(), "Decrement clicked on position: " + getAdapterPosition(),
+                    Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        public boolean incrementClicked(View v)
+        {
+            Toast.makeText(v.getContext(), "Increment clicked on position: " + getAdapterPosition(),
                     Toast.LENGTH_SHORT).show();
             return true;
         }
