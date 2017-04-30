@@ -1,7 +1,5 @@
 package com.jorbital.gymstat.data;
 
-import com.jorbital.gymstat.utils.MuscleGroupRealm;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

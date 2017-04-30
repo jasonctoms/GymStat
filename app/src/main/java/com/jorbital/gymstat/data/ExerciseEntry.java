@@ -1,7 +1,5 @@
 package com.jorbital.gymstat.data;
 
-import com.jorbital.gymstat.utils.WeightUnitRealm;
-
 import java.util.Date;
 
 import io.realm.RealmObject;
