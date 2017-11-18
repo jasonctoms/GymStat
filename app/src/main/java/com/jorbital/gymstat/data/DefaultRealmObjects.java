@@ -52,8 +52,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_bench));
                 e.setImagePath("file:///android_asset/ex_bb_bench_press.jpg");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.CHEST.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.CHEST).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -71,8 +71,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_bench));
                 e.setImagePath("file:///android_asset/ex_db_bench_press.jpg");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.CHEST.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.CHEST).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -90,8 +90,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_incline_bench));
                 e.setImagePath("file:///android_asset/ex_bb_incline_bench_press.jpg");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.CHEST.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.CHEST).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -109,8 +109,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_incline_bench));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.CHEST.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.CHEST).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -128,8 +128,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_decline_bench));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.CHEST.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.CHEST).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -147,8 +147,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_decline_bench));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.CHEST.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.CHEST  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -166,8 +166,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_squat));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.LEGS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.LOWERBACK.name()).
+                        equalTo("muscleGroup", MuscleGroup.LEGS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.LOWERBACK  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -185,8 +185,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_squat));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.LEGS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.LOWERBACK.name()).
+                        equalTo("muscleGroup", MuscleGroup.LEGS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.LOWERBACK  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -204,8 +204,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_shoulder_press_standing));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -223,8 +223,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_shoulder_press_standing));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -242,8 +242,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_shoulder_press_seated));
                 e.setImagePath("file:///android_asset/ex_bb_seated_shoulder_press.jpg");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -261,8 +261,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_shoulder_press_seated));
                 e.setImagePath("file:///android_asset/ex_db_seated_shoulder_press.jpg");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -280,7 +280,7 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_bicep_curl));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -298,7 +298,7 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_bicep_curl));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -316,8 +316,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_bb_tricep_extension));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -335,8 +335,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_db_tricep_extension));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -354,9 +354,9 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_lat_pulldown));
                 e.setImagePath("file:///android_asset/ex_default.png");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.UPPERBACK.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.UPPERBACK  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -374,8 +374,8 @@ public class DefaultRealmObjects
                 e.setName(c.getString(R.string.e_side_lateral_raise));
                 e.setImagePath("file:///android_asset/ex_side_lateral_raise.jpg");
                 RealmResults<MuscleGroupRealm> muscleGroups = realm.where(MuscleGroupRealm.class).
-                        equalTo("muscleGroup", MuscleGroup.SHOULDERS.name()).or().
-                        equalTo("muscleGroup", MuscleGroup.ARMS.name()).
+                        equalTo("muscleGroup", MuscleGroup.SHOULDERS  ).or().
+                        equalTo("muscleGroup", MuscleGroup.ARMS  ).
                         findAll();
                 for (MuscleGroupRealm muscleGroup : muscleGroups)
                 {
@@ -460,7 +460,7 @@ public class DefaultRealmObjects
             public void execute(Realm realm)
             {
                 MuscleGroupRealm arms = realm.createObject(MuscleGroupRealm.class);
-                arms.setEnum(MuscleGroup.ARMS);
+                arms.setMuscleGroup(MuscleGroup.ARMS);
             }
         });
         mRealm.executeTransaction(new Realm.Transaction()
@@ -469,7 +469,7 @@ public class DefaultRealmObjects
             public void execute(Realm realm)
             {
                 MuscleGroupRealm shoulders = realm.createObject(MuscleGroupRealm.class);
-                shoulders.setEnum(MuscleGroup.SHOULDERS);
+                shoulders.setMuscleGroup(MuscleGroup.SHOULDERS);
             }
         });
         mRealm.executeTransaction(new Realm.Transaction()
@@ -478,7 +478,7 @@ public class DefaultRealmObjects
             public void execute(Realm realm)
             {
                 MuscleGroupRealm chest = realm.createObject(MuscleGroupRealm.class);
-                chest.setEnum(MuscleGroup.CHEST);
+                chest.setMuscleGroup(MuscleGroup.CHEST);
             }
         });
         mRealm.executeTransaction(new Realm.Transaction()
@@ -487,7 +487,7 @@ public class DefaultRealmObjects
             public void execute(Realm realm)
             {
                 MuscleGroupRealm upperBack = realm.createObject(MuscleGroupRealm.class);
-                upperBack.setEnum(MuscleGroup.UPPERBACK);
+                upperBack.setMuscleGroup(MuscleGroup.UPPERBACK);
             }
         });
         mRealm.executeTransaction(new Realm.Transaction()
@@ -496,7 +496,7 @@ public class DefaultRealmObjects
             public void execute(Realm realm)
             {
                 MuscleGroupRealm lowerBack = realm.createObject(MuscleGroupRealm.class);
-                lowerBack.setEnum(MuscleGroup.LOWERBACK);
+                lowerBack.setMuscleGroup(MuscleGroup.LOWERBACK);
             }
         });
         mRealm.executeTransaction(new Realm.Transaction()
@@ -505,7 +505,7 @@ public class DefaultRealmObjects
             public void execute(Realm realm)
             {
                 MuscleGroupRealm legs = realm.createObject(MuscleGroupRealm.class);
-                legs.setEnum(MuscleGroup.LEGS);
+                legs.setMuscleGroup(MuscleGroup.LEGS);
             }
         });
     }

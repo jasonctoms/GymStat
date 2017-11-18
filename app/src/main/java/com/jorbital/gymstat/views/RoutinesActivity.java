@@ -1,20 +1,22 @@
 package com.jorbital.gymstat.views;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.jorbital.gymstat.R;
-import com.jorbital.gymstat.databinding.ActivityRoutinesBinding;
 import com.jorbital.gymstat.utils.BaseActivityWithNavDrawer;
 import com.jorbital.gymstat.viewmodels.RoutinesViewModel;
 
 public class RoutinesActivity extends BaseActivityWithNavDrawer
 {
-    private ActivityRoutinesBinding b;
     private RoutinesViewModel vm;
+
+    RecyclerView routinesRv;
+    ConstraintLayout noRoutinesLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -22,18 +24,17 @@ public class RoutinesActivity extends BaseActivityWithNavDrawer
         super.onCreate(savedInstanceState);
 
         if (vm.getAllRoutines().isEmpty())
-            b.noRoutinesLayout.setVisibility(View.VISIBLE);
+            noRoutinesLayout.setVisibility(View.VISIBLE);
 
-        b.routinesRv.setHasFixedSize(true);
+        routinesRv.setHasFixedSize(true);
 
-        b.routinesRv.setLayoutManager(new LinearLayoutManager(this));
+        routinesRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     protected void setLayout()
     {
-        b = DataBindingUtil.setContentView(this, R.layout.activity_routines);
-        b.setActivity(this);
+        setContentView(R.layout.activity_routines);
     }
 
     @Override
@@ -46,8 +47,8 @@ public class RoutinesActivity extends BaseActivityWithNavDrawer
     @Override
     protected void updateViewFromViewModel()
     {
-        if (b.routinesRv.getAdapter() == null)
-            b.routinesRv.setAdapter(new RoutinesAdapter(vm.getAllRoutines(), true));
+        if (routinesRv.getAdapter() == null)
+            routinesRv.setAdapter(new RoutinesAdapter(vm.getAllRoutines(), true));
         //else
            //update the list
     }

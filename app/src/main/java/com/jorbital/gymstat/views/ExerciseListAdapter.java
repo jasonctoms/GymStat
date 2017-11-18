@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.data.ExerciseObject;
-import com.jorbital.gymstat.databinding.ExerciseListItemBinding;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
@@ -26,15 +26,14 @@ public class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject
     @Override
     public ExerciseViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        ExerciseListItemBinding b = ExerciseListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new ExerciseViewHolder(b);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.exercise_list_item, parent, false);
+        return new ExerciseViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ExerciseViewHolder holder, int position)
     {
         ExerciseObject exercise = getItem(position);
-        holder.bind(exercise);
     }
 
     @Override
@@ -45,19 +44,10 @@ public class ExerciseListAdapter extends RealmRecyclerViewAdapter<ExerciseObject
 
     public class ExerciseViewHolder extends RecyclerView.ViewHolder
     {
-        private final ExerciseListItemBinding b;
 
-        ExerciseViewHolder(ExerciseListItemBinding binding)
+        public ExerciseViewHolder(View itemView)
         {
-            super(binding.getRoot());
-            this.b = binding;
-            b.setVh(this);
-        }
-
-        void bind(ExerciseObject item)
-        {
-            b.exerciseName.setText(item.getName());
-            b.executePendingBindings();
+            super(itemView);
         }
 
         public void itemClicked(View v)

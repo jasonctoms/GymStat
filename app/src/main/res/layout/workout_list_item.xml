@@ -1,148 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/workoutCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    card_view:cardUseCompatPadding="true">
 
-    <data>
-        <variable
-            name="vh"
-            type="com.jorbital.gymstat.views.WorkoutAdapter.WorkoutViewHolder"/>
-        <variable
-            name="vm"
-            type="com.jorbital.gymstat.viewmodels.WorkoutViewModel"/>
-    </data>
-
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardUseCompatPadding="true"
-        android:id="@+id/workoutCard"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/workoutItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp">
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/workoutImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:maxHeight="200dp"
+            android:maxWidth="150dp"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/workoutName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+            android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+            app:layout_constraintBottom_toBottomOf="@+id/workoutImage"
+            app:layout_constraintLeft_toRightOf="@+id/workoutImage"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/workoutImage"
+            tools:text="Workout Name"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/editSetsLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"/>
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/workoutItem"
-            android:layout_width="match_parent"
+            android:id="@+id/editSetsLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:onClick="@{(view) -> vh.itemClicked(view)}">
+            android:layout_marginBottom="4dp"
+            android:focusableInTouchMode="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/workoutName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
             <ImageView
-                android:id="@+id/workoutImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@null"
-                android:maxHeight="200dp"
-                android:maxWidth="150dp"
-                app:layout_constraintBottom_toTopOf="@+id/progressBar"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@mipmap/ic_launcher"/>
+                android:id="@+id/decrementSets"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/workout_decrement_sets"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/numberOfSets"
+                app:layout_constraintRight_toLeftOf="@+id/numberOfSets"
+                app:layout_constraintTop_toTopOf="@+id/numberOfSets"
+                app:srcCompat="@drawable/ic_subtract"/>
 
             <TextView
-                android:id="@+id/workoutName"
-                android:layout_width="0dp"
+                android:id="@+id/numberOfSets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/incrementSets"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/workout_increment_sets"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/numberOfSets"
+                app:layout_constraintLeft_toRightOf="@+id/numberOfSets"
+                app:layout_constraintTop_toTopOf="@+id/numberOfSets"
+                app:srcCompat="@drawable/ic_add_black"/>
+
+            <TextView
+                android:id="@+id/setsText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
-                android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-                android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-                app:layout_constraintBottom_toBottomOf="@+id/workoutImage"
-                app:layout_constraintLeft_toRightOf="@+id/workoutImage"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/workoutImage"
-                tools:text="Workout Name"/>
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/editSetsLayout"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"/>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/editSetsLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:focusableInTouchMode="true"
+                android:text="@string/workout_sets"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@+id/workoutName"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0">
-
-                <ImageView
-                    android:id="@+id/decrementSets"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:contentDescription="@string/workout_decrement_sets"
-                    android:padding="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/numberOfSets"
-                    app:layout_constraintRight_toLeftOf="@+id/numberOfSets"
-                    app:layout_constraintTop_toTopOf="@+id/numberOfSets"
-                    app:srcCompat="@drawable/ic_subtract"
-                    android:onClick="@{(view) -> vh.decrementClicked(view)}"/>
-
-                <TextView
-                    android:id="@+id/numberOfSets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:maxLength="2"
-                    android:maxLines="1"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <ImageView
-                    android:id="@+id/incrementSets"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:contentDescription="@string/workout_increment_sets"
-                    android:padding="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/numberOfSets"
-                    app:layout_constraintLeft_toRightOf="@+id/numberOfSets"
-                    app:layout_constraintTop_toTopOf="@+id/numberOfSets"
-                    app:srcCompat="@drawable/ic_add_black"
-                    android:onClick="@{(view) -> vh.incrementClicked(view)}"/>
-
-                <TextView
-                    android:id="@+id/setsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/workout_sets"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/incrementSets"
-                    app:layout_constraintTop_toTopOf="parent"/>
-            </android.support.constraint.ConstraintLayout>
-
+                app:layout_constraintLeft_toRightOf="@+id/incrementSets"
+                app:layout_constraintTop_toTopOf="parent"/>
         </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-</layout>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

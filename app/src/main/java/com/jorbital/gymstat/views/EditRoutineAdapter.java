@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.data.Exercise;
-import com.jorbital.gymstat.databinding.EditRoutineListItemBinding;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
@@ -26,15 +26,14 @@ public class EditRoutineAdapter extends RealmRecyclerViewAdapter<Exercise, EditR
     @Override
     public EditRoutineViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        EditRoutineListItemBinding b = EditRoutineListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new EditRoutineViewHolder(b);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.edit_routine_list_item, parent, false);
+        return new EditRoutineViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(EditRoutineViewHolder holder, int position)
     {
         Exercise exercise = getItem(position);
-        holder.bind(exercise);
     }
 
     @Override
@@ -45,19 +44,10 @@ public class EditRoutineAdapter extends RealmRecyclerViewAdapter<Exercise, EditR
 
     public class EditRoutineViewHolder extends RecyclerView.ViewHolder
     {
-        private final EditRoutineListItemBinding b;
 
-        EditRoutineViewHolder(EditRoutineListItemBinding binding)
+        public EditRoutineViewHolder(View itemView)
         {
-            super(binding.getRoot());
-            this.b = binding;
-            b.setVh(this);
-        }
-
-        void bind(Exercise item)
-        {
-            b.exerciseName.setText(item.getExerciseType().getName());
-            b.executePendingBindings();
+            super(itemView);
         }
 
         public void itemClicked(View v)

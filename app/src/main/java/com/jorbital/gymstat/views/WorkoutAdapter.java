@@ -1,6 +1,5 @@
 package com.jorbital.gymstat.views;
 
-import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,9 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.jorbital.gymstat.R;
 import com.jorbital.gymstat.data.Exercise;
-import com.jorbital.gymstat.databinding.WorkoutListItemBinding;
 import com.jorbital.gymstat.viewmodels.WorkoutViewModel;
 
 import io.realm.OrderedRealmCollection;
@@ -31,8 +29,8 @@ public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAd
     @Override
     public WorkoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        WorkoutListItemBinding b = WorkoutListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new WorkoutViewHolder(b);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.workout_list_item, parent, false);
+        return new WorkoutViewHolder(v);
     }
 
     @Override
@@ -50,23 +48,18 @@ public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAd
 
     public class WorkoutViewHolder extends RecyclerView.ViewHolder
     {
-        private final WorkoutListItemBinding b;
-
-        WorkoutViewHolder(WorkoutListItemBinding binding)
+        public WorkoutViewHolder(View itemView)
         {
-            super(binding.getRoot());
-            this.b = binding;
-            b.setVh(this);
-            b.setVm(mViewModel);
+            super(itemView);
         }
 
         void bind(Exercise item)
         {
-            b.workoutName.setText(item.getExerciseType().getName());
-            String path = item.getExerciseType().getImagePath();
-            Glide.with(itemView.getContext()).load(Uri.parse(path)).into(b.workoutImage);
-            b.numberOfSets.setText(String.valueOf(item.getNumberOfSets()));
-            b.executePendingBindings();
+//            b.workoutName.setText(item.getExerciseType().getName());
+//            String path = item.getExerciseType().getImagePath();
+//            Glide.with(itemView.getContext()).load(Uri.parse(path)).into(b.workoutImage);
+//            b.numberOfSets.setText(String.valueOf(item.getNumberOfSets()));
+//            b.executePendingBindings();
         }
 
         public void itemClicked(View v)
@@ -79,14 +72,14 @@ public class WorkoutAdapter extends RealmRecyclerViewAdapter<Exercise, WorkoutAd
         {
             Exercise selectedItem = getItem(getAdapterPosition());
             //noinspection ConstantConditions -- getIdKey cannot be null but the compiler doesn't know that
-            b.getVm().changeSetsForExercise(selectedItem.getIdKey(), selectedItem.getNumberOfSets() - 1);
+            //b.getVm().changeSetsForExercise(selectedItem.getIdKey(), selectedItem.getNumberOfSets() - 1);
         }
 
         public void incrementClicked(View v)
         {
             Exercise selectedItem = getItem(getAdapterPosition());
             //noinspection ConstantConditions -- getIdKey cannot be null but the compiler doesn't know that
-            b.getVm().changeSetsForExercise(selectedItem.getIdKey(), selectedItem.getNumberOfSets() + 1);
+            //b.getVm().changeSetsForExercise(selectedItem.getIdKey(), selectedItem.getNumberOfSets() + 1);
         }
     }
 }

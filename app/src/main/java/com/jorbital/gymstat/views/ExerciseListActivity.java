@@ -1,35 +1,34 @@
 package com.jorbital.gymstat.views;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
 import com.jorbital.gymstat.R;
-import com.jorbital.gymstat.databinding.ActivityExerciseListBinding;
 import com.jorbital.gymstat.utils.BaseActivityWithNavDrawer;
 import com.jorbital.gymstat.viewmodels.ExerciseListViewModel;
 
 public class ExerciseListActivity extends BaseActivityWithNavDrawer
 {
-    private ActivityExerciseListBinding b;
     private ExerciseListViewModel vm;
+
+    RecyclerView exerciseRv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        b.exerciseRv.setHasFixedSize(true);
-        b.exerciseRv.setLayoutManager(new LinearLayoutManager(this));
+        exerciseRv.setHasFixedSize(true);
+        exerciseRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     protected void setLayout()
     {
-        b = DataBindingUtil.setContentView(this, R.layout.activity_exercise_list);
-        b.setActivity(this);
+        setContentView(R.layout.activity_exercise_list);
     }
 
     @Override
@@ -42,8 +41,8 @@ public class ExerciseListActivity extends BaseActivityWithNavDrawer
     @Override
     protected void updateViewFromViewModel()
     {
-        if (b.exerciseRv.getAdapter() == null)
-            b.exerciseRv.setAdapter(new ExerciseListAdapter(vm.getAllExercises(), true));
+        if (exerciseRv.getAdapter() == null)
+            exerciseRv.setAdapter(new ExerciseListAdapter(vm.getAllExercises(), true));
         //else
            //update list
     }
