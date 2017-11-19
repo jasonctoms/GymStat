@@ -36,6 +36,8 @@ public class DefaultRealmObjects
 
         //TODO: remove this later
         addTestRoutines();
+
+        RealmResults<Routine> test = mRealm.where(Routine.class).findAll();
     }
 
     //TODO: add the default exercises here

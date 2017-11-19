@@ -1,6 +1,11 @@
 package com.jorbital.gymstat.views
 
+import kotlinx.android.synthetic.main.routines_list_item.view.*
+
 import android.content.Intent
+import android.graphics.Typeface
+import android.support.v4.content.res.ResourcesCompat
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +20,9 @@ import com.jorbital.gymstat.utils.DayOfWeekRealm
 import io.realm.OrderedRealmCollection
 import io.realm.RealmList
 import io.realm.RealmRecyclerViewAdapter
+import org.threeten.bp.DayOfWeek
+import org.threeten.bp.Duration
+import org.threeten.bp.LocalDateTime
 
 class RoutinesAdapter internal constructor(private val mData: OrderedRealmCollection<Routine>?, autoUpdate: Boolean) : RealmRecyclerViewAdapter<Routine, RoutinesAdapter.RoutineViewHolder>(mData, autoUpdate) {
 
@@ -24,84 +32,80 @@ class RoutinesAdapter internal constructor(private val mData: OrderedRealmCollec
     }
 
     override fun onBindViewHolder(holder: RoutineViewHolder, position: Int) {
-        val routine = getItem(position)
-        holder.bind(routine)
+        val routine = getItem(position) ?: return
+        holder.bind(routine, holder)
     }
 
     override fun getItemCount(): Int = mData!!.size
 
     inner class RoutineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        internal fun bind(item: Routine?) {
-            //            b.routineName.setText(item.getName());
-            //
-            //            LocalDateTime now = LocalDateTime.now();
-            //            LocalDateTime then = LocalDateTime.parse(item.getLastCompletedDate());
-            //            int days = (int) Duration.between(then, now).toDays();
-            //            b.lastPerformed.setText(String.format(itemView.getContext().getString(R.string.routines_last_performed), days));
-            //
-            //            RealmList<DayOfWeekRealm> weekdays = item.getDays();
-            //            setWeekdays(weekdays);
-            //
-            //            b.routineExercisesRV.setHasFixedSize(true);
-            //            b.routineExercisesRV.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
-            //                    LinearLayoutManager.VERTICAL, false));
-            //            b.routineExercisesRV.setNestedScrollingEnabled(false);
-            //            b.routineExercisesRV.setAdapter(new RoutineExerciseListAdapter(item.getExercises(), true));
-            //
-            //            b.executePendingBindings();
+        internal fun bind(routine: Routine, holder: RoutineViewHolder) {
+            holder.itemView.setOnClickListener { view -> itemClicked(view) }
+            itemView.startRoutineButton.setOnClickListener { view -> buttonClicked(view) }
+            itemView.routineName.text = routine.name
+
+            val now = LocalDateTime.now()
+            val then = LocalDateTime.parse(routine.lastCompletedDate)
+            val days = Duration.between(then, now).toDays()
+            itemView.lastPerformed.text = String.format(itemView.context.getString(R.string.routines_last_performed), days)
+
+            val weekdays = routine.days
+            setWeekdays(weekdays)
+
+            itemView.routineExercisesRV.setHasFixedSize(true)
+            itemView.routineExercisesRV.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
+            itemView.routineExercisesRV.isNestedScrollingEnabled = false
+            itemView.routineExercisesRV.adapter = RoutineExerciseListAdapter(routine.exercises, true)
         }
 
-        private fun setWeekdays(weekdays: RealmList<DayOfWeekRealm>) {
+        private fun setWeekdays(weekdays: RealmList<DayOfWeekRealm>?) {
+            if (weekdays == null)
+                return
             for (day in weekdays) {
-                //                int accent = ResourcesCompat.getColor(itemView.getResources(), R.color.colorAccent, null);
-                //
-                //                if(day.getEnum() == DayOfWeek.MONDAY)
-                //                {
-                //                    b.routineMonday.setTextColor(accent);
-                //                    b.routineMonday.setTypeface(null, Typeface.BOLD);
-                //                }
-                //                else if(day.getEnum() == DayOfWeek.TUESDAY)
-                //                {
-                //                    b.routineTuesday.setTextColor(accent);
-                //                    b.routineTuesday.setTypeface(null, Typeface.BOLD);
-                //                }
-                //                else if(day.getEnum() == DayOfWeek.WEDNESDAY)
-                //                {
-                //                    b.routineWednesday.setTextColor(accent);
-                //                    b.routineWednesday.setTypeface(null, Typeface.BOLD);
-                //                }
-                //                else if(day.getEnum() == DayOfWeek.THURSDAY)
-                //                {
-                //                    b.routineThursday.setTextColor(accent);
-                //                    b.routineThursday.setTypeface(null, Typeface.BOLD);
-                //                }
-                //                else if(day.getEnum() == DayOfWeek.FRIDAY)
-                //                {
-                //                    b.routineFriday.setTextColor(accent);
-                //                    b.routineFriday.setTypeface(null, Typeface.BOLD);
-                //                }
-                //                else if(day.getEnum() == DayOfWeek.SATURDAY)
-                //                {
-                //                    b.routineSaturday.setTextColor(accent);
-                //                    b.routineSaturday.setTypeface(null, Typeface.BOLD);
-                //                }
-                //                else if(day.getEnum() == DayOfWeek.SUNDAY)
-                //                {
-                //                    b.routineSunday.setTextColor(accent);
-                //                    b.routineSunday.setTypeface(null, Typeface.BOLD);
-                //                }
+                val accent = ResourcesCompat.getColor(itemView.resources, R.color.colorAccent, null)
+
+                when {
+                    day.enum == DayOfWeek.MONDAY -> {
+                        itemView.routineMonday.setTextColor(accent)
+                        itemView.routineMonday.setTypeface(null, Typeface.BOLD)
+                    }
+                    day.enum == DayOfWeek.TUESDAY -> {
+                        itemView.routineTuesday.setTextColor(accent)
+                        itemView.routineTuesday.setTypeface(null, Typeface.BOLD)
+                    }
+                    day.enum == DayOfWeek.WEDNESDAY -> {
+                        itemView.routineWednesday.setTextColor(accent)
+                        itemView.routineWednesday.setTypeface(null, Typeface.BOLD)
+                    }
+                    day.enum == DayOfWeek.THURSDAY -> {
+                        itemView.routineThursday.setTextColor(accent)
+                        itemView.routineThursday.setTypeface(null, Typeface.BOLD)
+                    }
+                    day.enum == DayOfWeek.FRIDAY -> {
+                        itemView.routineFriday.setTextColor(accent)
+                        itemView.routineFriday.setTypeface(null, Typeface.BOLD)
+                    }
+                    day.enum == DayOfWeek.SATURDAY -> {
+                        itemView.routineSaturday.setTextColor(accent)
+                        itemView.routineSaturday.setTypeface(null, Typeface.BOLD)
+                    }
+                    day.enum == DayOfWeek.SUNDAY -> {
+                        itemView.routineSunday.setTextColor(accent)
+                        itemView.routineSunday.setTypeface(null, Typeface.BOLD)
+                    }
+                }
             }
         }
 
-        fun itemClicked(v: View) {
+        private fun itemClicked(v: View) {
             val intent = Intent(v.context, WorkoutActivity::class.java)
             val selectedKey = mData!![adapterPosition].idKey
             intent.putExtra(GymStatStringConstants.SELECTED_ROUTINE, selectedKey)
             v.context.startActivity(intent)
         }
 
-        fun buttonClicked(v: View) {
+        private fun buttonClicked(v: View) {
             Toast.makeText(v.context, "This button start or stop the workout.",
                     Toast.LENGTH_LONG).show()
         }
