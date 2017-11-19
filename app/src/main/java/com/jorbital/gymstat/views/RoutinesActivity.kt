@@ -10,10 +10,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 
 import com.jorbital.gymstat.R
-import com.jorbital.gymstat.data.Routine
 import com.jorbital.gymstat.utils.BaseActivityWithNavDrawer
 import com.jorbital.gymstat.viewmodels.RoutinesViewModel
-import io.realm.RealmResults
 
 class RoutinesActivity : BaseActivityWithNavDrawer() {
     private var vm: RoutinesViewModel? = null
@@ -46,7 +44,7 @@ class RoutinesActivity : BaseActivityWithNavDrawer() {
             noRoutinesLayout.visibility = View.GONE
 
         if (routinesRv.adapter == null)
-            routinesRv.adapter = RoutinesAdapter(vm!!.allRoutines?.value, true)
+            routinesRv.adapter = RoutinesAdapter(vm!!.allRoutines?.results, true)
         else {
             //update the list, maybe not needed if the realm stuff works like magic
         }

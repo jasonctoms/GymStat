@@ -23,11 +23,10 @@ class RoutinesViewModel : ViewModel() {
     }
 
     fun noRoutines(): Boolean? {
-        var test2 = allRoutines
-        var test = allRoutines?.value
-
-        return if (allRoutines!!.value != null)
-            allRoutines!!.value!!.isEmpty()
+        if (allRoutines == null)
+            return null
+        return if (allRoutines?.results != null)
+            allRoutines?.results!!.isEmpty()
         else
             null
     }
