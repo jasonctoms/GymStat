@@ -20,9 +20,9 @@ public class ExerciseListViewModel
         this.allExercises = allExercises;
     }
 
-    public ExerciseListViewModel(Realm r)
+    public ExerciseListViewModel()
     {
-        realm = r;
+
     }
 
     public void makeListOfExercises()

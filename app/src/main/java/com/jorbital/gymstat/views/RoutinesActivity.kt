@@ -27,12 +27,12 @@ class RoutinesActivity : BaseActivityWithNavDrawer() {
         setContentView(R.layout.activity_routines)
     }
 
-    override fun createViewModel() {
-        vm = RoutinesViewModel(realm)
+    fun createViewModel() {
+        vm = RoutinesViewModel()
         vm?.makeListOfRoutines()
     }
 
-    override fun updateViewFromViewModel() {
+    fun updateViewFromViewModel() {
         if (routinesRv?.adapter == null) {
             routinesRv!!.adapter = RoutinesAdapter(vm!!.allRoutines, true)
         }

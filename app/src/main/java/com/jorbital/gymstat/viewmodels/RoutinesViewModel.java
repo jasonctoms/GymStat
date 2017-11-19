@@ -20,9 +20,9 @@ public class RoutinesViewModel
         this.allRoutines = allRoutines;
     }
 
-    public RoutinesViewModel(Realm r)
+    public RoutinesViewModel()
     {
-        realm = r;
+
     }
 
     public void makeListOfRoutines()

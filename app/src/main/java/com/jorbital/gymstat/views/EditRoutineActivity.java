@@ -32,17 +32,15 @@ public class EditRoutineActivity extends BaseActivityWithNavDrawer
         setContentView(R.layout.activity_edit_routine);
     }
 
-    @Override
     protected void createViewModel()
     {
-        vm = new EditRoutineViewModel(realm);
+        vm = new EditRoutineViewModel();
 
         //do not init the list if user is making a new routine
         if (mSelectedRoutineKey != null)
             vm.Init(mSelectedRoutineKey);
     }
 
-    @Override
     protected void updateViewFromViewModel()
     {
         if (editRoutineRV.getAdapter() == null)

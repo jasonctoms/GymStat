@@ -31,14 +31,12 @@ public class ExerciseListActivity extends BaseActivityWithNavDrawer
         setContentView(R.layout.activity_exercise_list);
     }
 
-    @Override
     protected void createViewModel()
     {
-        vm = new ExerciseListViewModel(realm);
+        vm = new ExerciseListViewModel();
         vm.makeListOfExercises();
     }
 
-    @Override
     protected void updateViewFromViewModel()
     {
         if (exerciseRv.getAdapter() == null)

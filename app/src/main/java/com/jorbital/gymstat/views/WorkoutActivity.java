@@ -46,17 +46,15 @@ public class WorkoutActivity extends BaseActivityWithNavDrawer
         setContentView(R.layout.activity_workout);
     }
 
-    @Override
     protected void createViewModel()
     {
-        vm = new WorkoutViewModel(realm);
+        vm = new WorkoutViewModel();
 
         //do not init the list if this is a free workout
         if (mSelectedRoutineKey != null)
             vm.Init(mSelectedRoutineKey);
     }
 
-    @Override
     protected void updateViewFromViewModel()
     {
         if (workoutRv.getAdapter() == null)

@@ -30,9 +30,9 @@ public class EditRoutineViewModel
         this.routineExercises = routineExercises;
     }
 
-    public EditRoutineViewModel(Realm r)
+    public EditRoutineViewModel()
     {
-        realm = r;
+
     }
 
     public void Init(String key)
