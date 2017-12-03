@@ -11,6 +11,6 @@ open class Routine : RealmObject() {
     var idKey: String? = null
     var name: String? = null
     var lastCompletedDate: String? = null
-    var days: RealmList<DayOfWeekRealm>? = null
-    var exercises: RealmList<Exercise>? = null
+    var days: RealmList<DayOfWeekRealm> = RealmList()
+    var exercises: RealmList<Exercise> = RealmList()
 }

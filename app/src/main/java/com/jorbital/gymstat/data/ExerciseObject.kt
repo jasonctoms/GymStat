@@ -9,6 +9,6 @@ open class ExerciseObject : RealmObject() {
     @PrimaryKey
     var idKey: String? = null
     var name: String? = null
-    var muscleGroup: RealmList<MuscleGroupRealm>? = null
+    var muscleGroup: RealmList<MuscleGroupRealm> = RealmList()
     var imagePath: String? = null
 }

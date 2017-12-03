@@ -9,6 +9,6 @@ open class Exercise : RealmObject() {
     var idKey: String? = null
     var exerciseType: ExerciseObject? = null
     var numberOfSets: Int = 0
-    var exerciseEntries: RealmList<ExerciseEntry>? = null
+    var exerciseEntries: RealmList<ExerciseEntry> = RealmList()
     var connectedRoutine: String? = null
 }
