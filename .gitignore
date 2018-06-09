@@ -12,3 +12,7 @@
 .externalNativeBuild
 
 \.idea/caches/
+
+\.idea/inspectionProfiles/
+
+\.idea/copyright/
