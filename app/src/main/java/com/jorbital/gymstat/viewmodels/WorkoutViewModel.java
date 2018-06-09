@@ -33,9 +33,9 @@ public class WorkoutViewModel
         this.workoutExercises = workoutExercises;
     }
 
-    public WorkoutViewModel(Realm r)
+    public WorkoutViewModel()
     {
-        realm = r;
+
     }
 
     public void Init(String key)
