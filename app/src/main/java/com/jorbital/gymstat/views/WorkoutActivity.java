@@ -27,6 +27,8 @@ public class WorkoutActivity extends BaseActivityWithNavDrawer
 
         super.onCreate(savedInstanceState);
 
+        createViewModel();
+
         String routineName;
         if (mSelectedRoutineKey != null)
              routineName = vm.getSelectedRoutine().getName();
