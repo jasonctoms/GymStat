@@ -1,17 +1,15 @@
 package com.jorbital.gymstat.views
 
-import kotlinx.android.synthetic.main.activity_routines.*
-
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 
 import com.jorbital.gymstat.R
 import com.jorbital.gymstat.utils.BaseActivityWithNavDrawer
 import com.jorbital.gymstat.viewmodels.RoutinesViewModel
+import kotlinx.android.synthetic.main.activity_routines.*
 
 class RoutinesActivity : BaseActivityWithNavDrawer() {
     private var vm: RoutinesViewModel? = null
@@ -24,7 +22,7 @@ class RoutinesActivity : BaseActivityWithNavDrawer() {
         vm!!.allRoutines?.observe(this, Observer { updateViewFromViewModel() })
 
         routinesRv.setHasFixedSize(true)
-        routinesRv.layoutManager = LinearLayoutManager(this)
+        routinesRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
         updateViewFromViewModel()
     }

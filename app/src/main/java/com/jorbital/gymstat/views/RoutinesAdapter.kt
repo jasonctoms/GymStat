@@ -1,12 +1,10 @@
 package com.jorbital.gymstat.views
 
-import kotlinx.android.synthetic.main.routines_list_item.view.*
-
 import android.content.Intent
 import android.graphics.Typeface
-import android.support.v4.content.res.ResourcesCompat
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +18,11 @@ import com.jorbital.gymstat.utils.DayOfWeekRealm
 import io.realm.OrderedRealmCollection
 import io.realm.RealmList
 import io.realm.RealmRecyclerViewAdapter
+import kotlinx.android.synthetic.main.routines_list_item.view.*
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.Duration
 import org.threeten.bp.LocalDateTime
+
 
 class RoutinesAdapter internal constructor(private val mData: OrderedRealmCollection<Routine>?, autoUpdate: Boolean) : RealmRecyclerViewAdapter<Routine, RoutinesAdapter.RoutineViewHolder>(mData, autoUpdate) {
 
@@ -38,7 +38,7 @@ class RoutinesAdapter internal constructor(private val mData: OrderedRealmCollec
 
     override fun getItemCount(): Int = mData!!.size
 
-    inner class RoutineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class RoutineViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         internal fun bind(routine: Routine, holder: RoutineViewHolder) {
             holder.itemView.setOnClickListener { view -> itemClicked(view) }
@@ -54,7 +54,7 @@ class RoutinesAdapter internal constructor(private val mData: OrderedRealmCollec
             setWeekdays(weekdays)
 
             itemView.routineExercisesRV.setHasFixedSize(true)
-            itemView.routineExercisesRV.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
+            itemView.routineExercisesRV.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(itemView.context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
             itemView.routineExercisesRV.isNestedScrollingEnabled = false
             itemView.routineExercisesRV.adapter = RoutineExerciseListAdapter(routine.exercises, true)
         }

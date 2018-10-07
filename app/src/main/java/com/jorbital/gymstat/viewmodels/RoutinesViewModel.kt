@@ -1,6 +1,6 @@
 package com.jorbital.gymstat.viewmodels
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 import com.jorbital.gymstat.data.Routine
 import com.jorbital.gymstat.utils.LiveRealmData
